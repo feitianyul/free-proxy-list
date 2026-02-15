@@ -6,7 +6,7 @@ permissions:
 
 concurrency:
   group: "update-full"
-  cancel-in-progress: true
+  cancel-in-progress: false  # 新 run 排队等待，不取消正在运行的全量更新
 
 on:
   workflow_dispatch:
@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 'stable'
+          cache: 'go'
+          cache-dependency-path: go.sum
 
       - name: Full update (fetch → parse → validate → generate)
         run: make update

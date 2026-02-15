@@ -37,6 +37,10 @@ func main() {
 		return
 	}
 
+	// #region agent log
+	internal.DebugLog("cmd/main.go:main", "full run started", map[string]interface{}{"dir": dir}, "H5")
+	// #endregion
+
 	// 只处理 http、https、socks4、socks5 四种代理源
 	allowedSources := map[string]bool{"http": true, "https": true, "socks4": true, "socks5": true}
 
@@ -62,6 +66,10 @@ func main() {
 			slog.Warn("gfp: read source", slog.String("file", path), slog.Any("err", err))
 			return nil
 		}
+
+		// #region agent log
+		internal.DebugLog("cmd/main.go:WalkDir", "about to Load source", map[string]interface{}{"path": path, "proto": proto}, "H3")
+		// #endregion
 
 		log.Println("--------" + path + "-------")
 		err = internal.Load(proto, buf)
