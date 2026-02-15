@@ -1,5 +1,9 @@
+**中文** | [English (README_EN.md)](README_EN.md)
+
+---
+
 <p align="center">
-  <img src="https://img.shields.io/badge/Updated_Every_30_Minutes-passing-success">  
+  <img src="https://img.shields.io/badge/每30分钟更新-通过-success">  
   <br>
   <img src="https://img.shields.io/website/https/getfreeproxy.com.svg">
   <img src="https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/total.svg">
@@ -8,59 +12,64 @@
   
   <br>
   <br>
-  <a href="https://getfreeproxy.com/lists/" title="free working proxy list">Working Proxy List</a> | <a href="https://getfreeproxy.com/tools/proxy-checker" title="free online proxy checker">Free Proxy Checker</a> | <a href="https://getfreeproxy.com/tools/proxy-protocol-parser" title="free online proxy protocol parser">Universal Proxy Procotol Parser</a>| <a href="https://developer.getfreeproxy.com/" title="free proxy api">Free Proxy API</a>
+  <a href="https://getfreeproxy.com/lists/" title="可用代理列表">可用代理列表</a> | <a href="https://getfreeproxy.com/tools/proxy-checker" title="在线代理检测">免费代理检测</a> | <a href="https://getfreeproxy.com/tools/proxy-protocol-parser" title="代理协议解析">通用代理协议解析</a> | <a href="https://developer.getfreeproxy.com/" title="代理 API">免费代理 API</a>
   <br>
 </p>
 
-# 🌎 GetFreeProxy (GFP): Free Proxy List
+# 🌎 GetFreeProxy (GFP)：免费代理列表
 
-**GetFreeProxy (GFP)** is an open-source project that automatically aggregates and validates free proxies from across the internet. Our goal is to provide a fresh, reliable, and comprehensive list of public proxies for developers, researchers, and anyone in need of proxy services.
+**GetFreeProxy (GFP)** 是一个开源项目，自动从互联网聚合并校验免费代理，旨在为开发者、研究人员及需要代理服务的用户提供新鲜、可靠、可用的公共代理列表。
 
-The lists are updated hourly, ensuring you always have access to the most current proxies available.
+列表按小时更新，确保您始终能获取到最新的可用代理。
 
-## 🔄 How It Works
+---
 
-This project runs on a simple yet powerful automated workflow:
+## 📖 项目说明
 
-1.  **Fetch**: A Go application fetches proxy lists from various sources defined in the `sources/` directory. It supports dynamic URL generation (e.g., based on the current date) and can handle different data formats like raw text, Base64, etc.
-2.  **Parse & Normalize**: The fetched data is parsed and normalized into a standard proxy format. The system is extensible, allowing new parsers and data transformers to be added easily.
-3.  **Deduplicate & Store**: All unique proxies are stored in memory.
-4.  **Generate Lists**: The application generates clean, protocol-specific proxy lists (e.g., `http.txt`, `vless.txt`) and saves them in the `list/` directory.
-5.  **Update Badges**: SVG badges are generated to display the count of available proxies for each protocol.
+本项目为开源免费代理聚合与校验工具，从互联网公开源拉取代理并**仅保留 HTTP、HTTPS、SOCKS4、SOCKS5** 三种类型，经校验后生成列表，供开发者、研究人员等使用。
 
-This entire process is automated using GitHub Actions: **full pipeline** (fetch → parse → validate → generate) runs **every hour**; **light revalidate** (re-check existing proxies, remove dead ones) runs **every 30 minutes**. The "Last Updated" time in the table below is in UTC and UTC+8.
+### 本仓库特点
 
-## 📋 Proxy Formats
+- **仅保留三种代理**：HTTP、HTTPS、SOCKS4/5，不收录 VMess、Trojan、VLESS、SS/SSR、Hysteria 等其它协议。
+- **校验规则**：对每条 HTTP/HTTPS/SOCKS 代理使用 **GET** 请求访问以下两个地址进行验证：
+  - `https://www.eastmoney.com/`
+  - `https://sinajs.cn/`  
+  两个请求均需在 **2 秒内**成功（HTTP 200）方视为通过，未通过的不写入列表。
+- **更新频率**：列表按小时更新，保证可用代理的时效性。
 
-We provide proxies in multiple formats, ready to be used in your applications.
+### 工作流程
 
-| Type | Format | Example |
+1. **拉取**：从 `sources/` 目录下配置的源（仅处理 `http.txt`、`https.txt`、`socks4.txt`、`socks5.txt`）拉取原始代理数据，支持动态 URL 及 Base64 等格式。
+2. **解析与规范化**：将原始数据解析为标准代理格式（协议、IP、端口、认证等）。
+3. **校验**：对 HTTP/HTTPS/SOCKS 代理通过上述 GET 验证与 2 秒超时规则进行筛选。
+4. **去重与存储**：通过校验的代理去重后写入内存。
+5. **生成列表**：按协议生成 `list/` 目录下的 `http.txt`、`https.txt`、`socks4.txt`、`socks5.txt`，并更新统计与 README 中的下载表格。
+
+自动化由 GitHub Actions 执行：**全量流程**（抓取→解析→验证→生成列表）**每小时**运行一次；**轻量复测**（对已有列表做连通性复测、剔除失效代理）**每 30 分钟**运行一次。下表「最后更新」时间为 UTC 及 UTC+8。
+
+### 支持的代理格式示例
+
+| 类型 | 格式 | 示例 |
 | :--- | :--- | :--- |
-| **HTTP/S** | `http://ip:port` | `http://1.2.3.4:8080` |
+| **HTTP/HTTPS** | `http://ip:port` | `http://1.2.3.4:8080` |
 | | `http://user:pass@ip:port` | `http://user:pass@1.2.3.4:8080` |
 | **SOCKS4/5** | `socks5://ip:port` | `socks5://1.2.3.4:1080` |
-| **V2Ray/XRay**| `vmess://...` / `vless://...` | `vless://uuid@...` |
-| **Trojan** | `trojan://...` | `trojan://uuid@...` |
-| **ShadowSocks**| `ss://...` / `ssr://...` | `ss://method:pass@...` |
-| **Hysteria** | `hy://...` (*Note: `hysteria://`, `hhysteria://` are automatically converted to `hy://`) | `hy://uuid@...` |
-| **Hysteria2**| `hy2://...` (*Note: `hysteria2://`, `hhy2://`, `hhysteria2://` are automatically converted to `hy2://`) | `hy2://uuid@...` |
-| **TUIC**| `tuic://...` | `tuic://uuid@...` |
-| **WireGuard**| `wireguard://...` | `wireguard://publickey@endpoint:port?allowed_ips=...` |
 
-## 🔗 Direct Download Links
+---
 
+## 🔗 直接下载链接
 
-Click on your preferred proxy type to get the latest list. These links always point to the most recently updated proxy files.
+点击下方表格中您需要的协议类型即可获取最新列表，链接始终指向最近更新的代理文件。
 
 <!-- BEGIN PROXY LIST -->
 
-Last Updated: 2026-02-15 13:44:23 UTC
+最后更新：2026-02-15 13:44:23 UTC
 
-**Total Proxies: 1840067**
+**代理总数：1840067**
 
-Click on your preferred proxy type to get the latest list. These links always point to the most recently updated proxy files.
+点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
 
-| Protocol | Count | Download |
+| 协议 | 数量 | 下载 |
 |----------|-------|----------|
 | HTTP | 459086 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
 | HTTPS | 423312 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/https.txt |
@@ -79,28 +88,28 @@ Click on your preferred proxy type to get the latest list. These links always po
 
 <!-- END PROXY LIST -->
 
-## 🤝 Contributing
+## 🤝 参与贡献
 
-This is a community-driven project, and your contributions are highly welcome! The easiest way to contribute is by adding new proxy sources.
+本项目由社区驱动，欢迎任何形式的贡献。最简单的参与方式就是添加新的代理数据源。
 
-Please read our **[Contributing Guidelines](CONTRIBUTING.md)** to get started.
+请先阅读 **[贡献指南](CONTRIBUTING.md)** 了解如何开始。
 
-## 🙏 Support the Project
+## 🙏 支持本项目
 
-If you find this project useful, please consider supporting it. It helps us gain visibility and encourages more people to contribute.
+如果您觉得本项目有帮助，欢迎给予支持，让更多人看到并参与贡献。
 
--   **Star this repository** on GitHub! ⭐️
--   **Share it** with your friends and colleagues.
+-   在 GitHub 上 **给本仓库加星** ⭐️
+-   **分享**给朋友和同事
 
-## ⚠️ Disclaimer
+## ⚠️ 免责声明
 
--   These proxies are collected from public sources. There is no guarantee of their speed, security, or uptime.
--   Use these proxies at your own risk.
--   The maintainers of this repository are not responsible for any misuse. Do not use these proxies for illegal activities.
+-   本仓库中的代理均来自公开来源，不保证其速度、安全性或可用性。
+-   使用这些代理的风险由您自行承担。
+-   本仓库维护者不对任何滥用行为负责。请勿将代理用于非法用途。
 
-## 📝 License
+## 📝 许可证
 
-This repository is released under the MIT license. See [LICENSE](LICENSE) for details.
+本仓库采用 MIT 许可证发布。详见 [LICENSE](LICENSE)。
 
 ## Stars
 [![Star History Chart](https://api.star-history.com/svg?repos=gfpcom/free-proxy-list&type=Date)](https://star-history.com/#gfpcom/free-proxy-list&Date)

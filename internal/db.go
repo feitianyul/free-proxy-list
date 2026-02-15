@@ -109,27 +109,10 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int) {
 	startMarker := "<!-- BEGIN PROXY LIST -->"
 	endMarker := "<!-- END PROXY LIST -->"
 
-	// Update README.md (English)
+	// Update README.md（中文，GitHub 首页默认显示）
 	readmePath := filepath.Join(dir, "..", "README.md")
 	readmeContent, err := os.ReadFile(readmePath)
 	if err == nil {
-		newSection := fmt.Sprintf(`
-Last Updated: %s (%s)
-
-**Total Proxies: %d**
-
-Click on your preferred proxy type to get the latest list. These links always point to the most recently updated proxy files.
-
-| Protocol | Count | Download |
-|----------|-------|----------|
-%s`, tsUTC, tsUTC8, total, tableContent.String())
-		replaceReadmeSection(readmePath, string(readmeContent), startMarker, endMarker, newSection)
-	}
-
-	// Update README_ZH.md (中文)
-	readmeZHPath := filepath.Join(dir, "..", "README_ZH.md")
-	readmeZHContent, errZH := os.ReadFile(readmeZHPath)
-	if errZH == nil {
 		newSectionZH := fmt.Sprintf(`
 最后更新：%s（%s）
 
@@ -140,7 +123,24 @@ Click on your preferred proxy type to get the latest list. These links always po
 | 协议 | 数量 | 下载 |
 |----------|-------|----------|
 %s`, tsUTC, tsUTC8, total, tableContent.String())
-		replaceReadmeSection(readmeZHPath, string(readmeZHContent), startMarker, endMarker, newSectionZH)
+		replaceReadmeSection(readmePath, string(readmeContent), startMarker, endMarker, newSectionZH)
+	}
+
+	// Update README_EN.md (English)
+	readmeENPath := filepath.Join(dir, "..", "README_EN.md")
+	readmeENContent, errEN := os.ReadFile(readmeENPath)
+	if errEN == nil {
+		newSection := fmt.Sprintf(`
+Last Updated: %s (%s)
+
+**Total Proxies: %d**
+
+Click on your preferred proxy type to get the latest list. These links always point to the most recently updated proxy files.
+
+| Protocol | Count | Download |
+|----------|-------|----------|
+%s`, tsUTC, tsUTC8, total, tableContent.String())
+		replaceReadmeSection(readmeENPath, string(readmeENContent), startMarker, endMarker, newSection)
 	}
 }
 

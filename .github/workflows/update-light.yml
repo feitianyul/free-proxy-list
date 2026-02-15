@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md README_ZH.md 2>/dev/null || true
+          git add README.md README_EN.md 2>/dev/null || true
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "chore(list): Light revalidate proxy list - $timestamp"
