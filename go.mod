@@ -5,6 +5,7 @@ go 1.25
 require (
 	github.com/cnlangzi/proxyclient v0.0.21
 	github.com/stretchr/testify v1.11.1
+	h12.io/socks v1.0.3
 )
 
 require (
@@ -52,6 +53,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gvisor.dev/gvisor v0.0.0-20250428193742-2d800c3129d5 // indirect
-	h12.io/socks v1.0.3 // indirect
 	lukechampine.com/blake3 v1.4.1 // indirect
 )

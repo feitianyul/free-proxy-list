@@ -17,7 +17,11 @@ var (
 	db = make(map[string]*Proxy)
 )
 
+// 只保留 http、https、socks4、socks5 三种代理
 func Save(it *Proxy) {
+	if !IsAllowedProtocol(it.Protocol) {
+		return
+	}
 	h := md5.New()
 	id := hex.EncodeToString(h.Sum([]byte(fmt.Sprintf("%s://%s:%v", it.Protocol, it.IP, it.Port))))
 	db[id] = it

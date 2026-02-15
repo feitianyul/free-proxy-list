@@ -46,10 +46,17 @@ func Fetch(proto, src string, transformer Transformer, parser Parser) int {
 		}
 
 		it, err := parser(proto, line)
-		if err == nil {
-			Save(it)
-			total++
+		if err != nil {
+			continue
 		}
+		// 仅对 http/https/socks 代理做 GET 验证：eastmoney.com 与 sinajs.cn，延迟不超过 2 秒
+		if IsAllowedProtocol(it.Protocol) {
+			if !CheckProxy(it) {
+				continue
+			}
+		}
+		Save(it)
+		total++
 	}
 
 	return total
