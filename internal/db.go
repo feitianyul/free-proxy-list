@@ -17,6 +17,11 @@ var (
 	db = make(map[string]*Proxy)
 )
 
+// ClearDB 清空内存中的代理库，用于轻量复测前重置
+func ClearDB() {
+	db = make(map[string]*Proxy)
+}
+
 // 只保留 http、https、socks4、socks5 三种代理
 func Save(it *Proxy) {
 	if !IsAllowedProtocol(it.Protocol) {
