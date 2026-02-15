@@ -1,20 +1,20 @@
-# 全量更新：每小时执行一次（抓取 → 解析 → 验证 → 生成列表）
-name: Update Lists (Full)
+# 轻量复测：每 30 分钟对已有列表做连通性复测，剔除失效代理
+name: Update Lists (Light - Revalidate)
 
 permissions:
   contents: write
 
 concurrency:
-  group: "update-full"
+  group: "update-light"
   cancel-in-progress: true
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # 每小时整点
+    - cron: '30 * * * *'  # 每小时的 30 分
 
 jobs:
-  update:
+  revalidate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -25,8 +25,23 @@ jobs:
         with:
           go-version: 'stable'
 
-      - name: Full update (fetch → parse → validate → generate)
-        run: make update
+      - name: Clone Wiki (get current lists for revalidate)
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          rm -rf ../wiki || true
+          git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git" ../wiki || true
+          mkdir -p ../wiki/lists
+
+      - name: Revalidate proxies (GET eastmoney + sinajs, 2s)
+        run: |
+          go build -o gfp ./cmd/main.go
+          ./gfp -revalidate -input-dir ../wiki/lists -dir .
+
+      - name: Copy updated list to wiki
+        run: |
+          mkdir -p ../wiki/lists
+          cp -f list/*.txt list/total.svg ../wiki/lists/ 2>/dev/null || true
 
       - name: Commit README and push
         env:
@@ -37,20 +52,11 @@ jobs:
           git add README.md README_ZH.md 2>/dev/null || true
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-            git commit -m "chore(list): Full proxy list update - $timestamp"
+            git commit -m "chore(list): Light revalidate proxy list - $timestamp"
             git push
           fi
 
-      - name: Clone Wiki and copy list to wiki
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: |
-          rm -rf ../wiki || true
-          git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git" ../wiki || true
-          mkdir -p ../wiki/lists
-          cp -r list/* ../wiki/lists/ 2>/dev/null || true
-
-      - name: Update Wiki
+      - name: Push Wiki
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
@@ -66,7 +72,7 @@ jobs:
           git add .
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-            git commit -m "Update proxy lists - $timestamp"
+            git commit -m "Update proxy lists (revalidate) - $timestamp"
             git branch -M master
             git push --force origin master
           fi

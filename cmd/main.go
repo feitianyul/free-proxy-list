@@ -12,15 +12,30 @@ import (
 	"github.com/gfpcom/free-proxy-list/internal"
 )
 
-var dir string
+var (
+	dir        string
+	revalidate bool
+	inputDir   string
+)
 
 func main() {
-
-	flag.StringVar(&dir, "dir", ".", "work directory")
+	flag.StringVar(&dir, "dir", ".", "work directory (output list dir)")
+	flag.BoolVar(&revalidate, "revalidate", false, "lightweight mode: read existing lists from -input-dir, re-check each proxy, write to -dir")
+	flag.StringVar(&inputDir, "input-dir", "", "input directory for -revalidate (e.g. ../wiki/lists)")
 	flag.Parse()
 
 	os.MkdirAll(filepath.Join(dir, "list"), 0755) // nolint: errcheck
 
+	if revalidate {
+		if inputDir == "" {
+			inputDir = filepath.Join(dir, "list")
+		}
+		log.Println("revalidate from", inputDir, "->", dir)
+		n := internal.RevalidateFromDir(inputDir)
+		log.Println("revalidate passed:", n)
+		internal.WriteTo(filepath.Join(dir, "list"))
+		return
+	}
 
 	// 只处理 http、https、socks4、socks5 四种代理源
 	allowedSources := map[string]bool{"http": true, "https": true, "socks4": true, "socks5": true}

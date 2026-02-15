@@ -28,7 +28,7 @@ This project runs on a simple yet powerful automated workflow:
 4.  **Generate Lists**: The application generates clean, protocol-specific proxy lists (e.g., `http.txt`, `vless.txt`) and saves them in the `list/` directory.
 5.  **Update Badges**: SVG badges are generated to display the count of available proxies for each protocol.
 
-This entire process is automated using GitHub Actions and runs every hour.
+This entire process is automated using GitHub Actions: **full pipeline** (fetch → parse → validate → generate) runs **every hour**; **light revalidate** (re-check existing proxies, remove dead ones) runs **every 30 minutes**. The "Last Updated" time in the table below is in UTC and UTC+8.
 
 ## 📋 Proxy Formats
 

@@ -83,15 +83,14 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int) {
 	}
 	sort.Strings(protocols)
 
-	timestamp := time.Now().UTC().Format("2006-01-02 15:04:05 UTC")
+	tsUTC := time.Now().UTC().Format("2006-01-02 15:04:05 UTC")
+	tsUTC8 := time.Now().In(time.FixedZone("UTC+8", 8*3600)).Format("2006-01-02 15:04:05 UTC+8")
 
 	// Generate total.svg using shields.io
-	// e.g. https://img.shields.io/badge/total-1234-blue
 	svgURL := fmt.Sprintf("https://img.shields.io/badge/total-%d-blue", total)
 	resp, err := httpGet(svgURL)
 	if err == nil && resp != nil {
 		defer resp.Close()
-		// write to list/total.svg
 		outPath := filepath.Join(dir, "total.svg")
 		_ = os.WriteFile(outPath, resp.Bytes(), 0644) // nolint: errcheck
 	}
@@ -107,12 +106,15 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int) {
 			url))
 	}
 
-	// Update README.md
+	startMarker := "<!-- BEGIN PROXY LIST -->"
+	endMarker := "<!-- END PROXY LIST -->"
+
+	// Update README.md (English)
 	readmePath := filepath.Join(dir, "..", "README.md")
 	readmeContent, err := os.ReadFile(readmePath)
 	if err == nil {
 		newSection := fmt.Sprintf(`
-Last Updated: %s
+Last Updated: %s (%s)
 
 **Total Proxies: %d**
 
@@ -120,21 +122,36 @@ Click on your preferred proxy type to get the latest list. These links always po
 
 | Protocol | Count | Download |
 |----------|-------|----------|
-%s`, timestamp, total, tableContent.String())
+%s`, tsUTC, tsUTC8, total, tableContent.String())
+		replaceReadmeSection(readmePath, string(readmeContent), startMarker, endMarker, newSection)
+	}
 
-		content := string(readmeContent)
-		startMarker := "<!-- BEGIN PROXY LIST -->"
-		endMarker := "<!-- END PROXY LIST -->"
+	// Update README_ZH.md (中文)
+	readmeZHPath := filepath.Join(dir, "..", "README_ZH.md")
+	readmeZHContent, errZH := os.ReadFile(readmeZHPath)
+	if errZH == nil {
+		newSectionZH := fmt.Sprintf(`
+最后更新：%s（%s）
 
-		startIdx := strings.Index(content, startMarker)
-		endIdx := strings.Index(content, endMarker)
+**代理总数：%d**
 
-		if startIdx != -1 && endIdx != -1 {
-			before := content[:startIdx+len(startMarker)]
-			after := content[endIdx:]
-			newContent := before + "\n" + newSection + "\n" + after
-			_ = os.WriteFile(readmePath, []byte(newContent), 0644) // nolint: errcheck
-		}
+点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
+
+| 协议 | 数量 | 下载 |
+|----------|-------|----------|
+%s`, tsUTC, tsUTC8, total, tableContent.String())
+		replaceReadmeSection(readmeZHPath, string(readmeZHContent), startMarker, endMarker, newSectionZH)
+	}
+}
+
+func replaceReadmeSection(readmePath, content, startMarker, endMarker, newSection string) {
+	startIdx := strings.Index(content, startMarker)
+	endIdx := strings.Index(content, endMarker)
+	if startIdx != -1 && endIdx != -1 {
+		before := content[:startIdx+len(startMarker)]
+		after := content[endIdx:]
+		newContent := before + "\n" + newSection + "\n" + after
+		_ = os.WriteFile(readmePath, []byte(newContent), 0644) // nolint: errcheck
 	}
 }
 
