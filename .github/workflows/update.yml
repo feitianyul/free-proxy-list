@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 'stable'
-          cache: 'go'
+          cache: true
           cache-dependency-path: go.sum
 
       - name: Full update (fetch → parse → validate → generate)
