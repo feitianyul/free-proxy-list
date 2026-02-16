@@ -1,9 +1,12 @@
-.PHONY: update build clone-wiki clone-wiki-only update-wiki
+.PHONY: update build tidy clone-wiki clone-wiki-only update-wiki
 
-update:
+tidy:
+	go mod tidy
+
+update: tidy
 	go build -o gfp cmd/main.go && ./gfp
 
-build:
+build: tidy
 	go build -v -o gfp cmd/main.go
 
 # clone-wiki-only: 仅克隆 wiki 仓库（用于轻量复测时读取当前 lists）
