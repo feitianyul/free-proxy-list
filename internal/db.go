@@ -69,6 +69,15 @@ func WriteTo(dir string) {
 		file.WriteString(it.String() + "\n") // nolint: errcheck
 	}
 
+	// 保证 http.txt / https.txt 存在（即使数量为 0，便于 README 下载链接一致）
+	for _, proto := range []string{"http", "https"} {
+		if _, ok := files[proto]; !ok {
+			if f, err := os.Create(filepath.Join(dir, proto+".txt")); err == nil {
+				files[proto] = f
+			}
+		}
+	}
+
 	// 双协议结果：写 http+s.txt（同时通过 HTTP 与 HTTPS 的代理）
 	results := GetDualResults()
 	var httpPlusSCount int
@@ -83,23 +92,24 @@ func WriteTo(dir string) {
 		f.Sync()  // nolint: errcheck
 		f.Close()
 	}
-	if httpPlusSCount > 0 {
-		counters["http+s"] = httpPlusSCount
-	}
+	counters["http+s"] = httpPlusSCount
 
 	// Generate total.svg and update README (list section + proxy table)
 	WriteTotalAndUpdateReadme(dir, counters, results)
 }
 
 func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*ProxyResult) {
-	// Calculate total (各协议数量之和，不含重复；total 用于 badge)
-	total := 0
-	protocols := make([]string, 0, len(counters))
-	for proto, count := range counters {
-		protocols = append(protocols, proto)
-		total += count
+	// 固定展示三种协议（即使数量为 0），保证 README 表格始终有 HTTP / HTTPS / HTTP+S 三行
+	protocolOrder := []string{"http", "https", "http+s"}
+	for _, p := range protocolOrder {
+		if _, ok := counters[p]; !ok {
+			counters[p] = 0
+		}
 	}
-	sort.Strings(protocols)
+	total := 0
+	for _, c := range counters {
+		total += c
+	}
 
 	tsUTC := time.Now().UTC().Format("2006-01-02 15:04:05 UTC")
 	tsUTC8 := time.Now().In(time.FixedZone("UTC+8", 8*3600)).Format("2006-01-02 15:04:05 UTC+8")
@@ -113,9 +123,9 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*P
 		_ = os.WriteFile(outPath, resp.Bytes(), 0644) // nolint: errcheck
 	}
 
-	// Build protocol table for README (协议 | 数量 | 下载)，含 http+s
+	// Build protocol table for README (协议 | 数量 | 下载)，固定三行 HTTP / HTTPS / HTTP+S
 	var tableContent strings.Builder
-	for _, proto := range protocols {
+	for _, proto := range protocolOrder {
 		count := counters[proto]
 		fileName := proto + ".txt"
 		url := fmt.Sprintf("https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/%s", fileName)
