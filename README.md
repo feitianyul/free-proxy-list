@@ -64,15 +64,15 @@
 
 <!-- BEGIN PROXY LIST -->
 
-最后更新：2026-02-16 22:51:14 UTC（2026-02-17 06:51:14 UTC+8）
+最后更新：2026-02-16 23:51:35 UTC（2026-02-17 07:51:35 UTC+8）
 
-**代理总数：102**
+**代理总数：150**
 
 点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
 
 | 协议 | 数量 | 下载 |
 |----------|-------|----------|
-| HTTP | 102 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
+| HTTP | 150 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
 | HTTPS | 0 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/https.txt |
 | HTTP+S | 0 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http+s.txt |
 
@@ -83,106 +83,106 @@
 <!-- BEGIN PROXY TABLE -->
 | 代理地址 | HTTP | HTTPS |
 |----------|------|--------|
-| 138.68.60.8:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 67.43.228.250:26419 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 67.43.228.250:24763 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 72.10.160.90:27113 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 67.43.228.254:28073 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 134.209.29.120:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 47.74.226.8:5001 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 128.199.202.122:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 72.56.59.62:63133 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 72.56.50.17:59787 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.30.86:63900 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.30.68:63744 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.30.58:63744 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.30.63:63744 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.30.91:63900 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.30.37:59741 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 72.56.59.56:63127 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 205.209.118.30:3138 | ✓ 1196ms | 否 Head "https://www.ea |
-| 5.9.218.168:3128 | 否 Head "https://financ | 否 Head "https://www.ea |
-| 158.160.215.167:8123 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 147.75.202.36:10016 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 94.176.3.43:7443 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 5.75.201.136:1080 | ✓ 1895ms | 否 Head "https://www.ea |
-| 45.151.182.9:3128 | 否 Head "https://financ | 否 Head "https://www.ea |
-| 213.219.215.233:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 34.101.184.164:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 150.230.104.3:16728 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 140.227.61.201:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 195.158.8.123:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 188.130.160.209:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 77.110.125.30:65531 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 77.110.97.209:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 77.225.198.220:9812 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 90.84.188.97:8000 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.92:17403 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.228.253:3089 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.90:17403 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.90:32799 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.228.254:5701 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.164.178:29823 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.173:24865 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.228.250:5701 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.91:31697 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.90:14233 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.164.178:20353 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.90:3697 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 47.239.61.82:9001 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 216.229.112.25:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 205.209.118.30:3138 | ✓ 1454ms | 否 Head "https://www.ea |
+| 8.219.97.248:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 5.9.218.168:3128 | ✓ 1188ms | 否 Head "https://www.ea |
+| 52.188.28.218:3128 | ✓ 1450ms | 否 Head "https://www.ea |
 | 94.176.3.53:7443 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 91.233.223.147:3128 | ✓ 1758ms | 否 Head "https://www.ea |
+| 94.176.3.42:7443 | ✓ 1748ms | 否 Head "https://www.ea |
+| 72.56.59.56:63127 | ✓ 1949ms | 否 Head "https://www.ea |
+| 72.56.59.23:61937 | ✓ 1849ms | 否 Head "https://www.ea |
 | 72.56.59.17:61931 | 否 Head "https://financ | 否 Head "https://www.ea |
-| 72.56.59.23:61937 | 否 Head "https://financ | 否 Head "https://www.ea |
-| 91.187.57.109:8080 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 72.56.59.62:63133 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 72.56.50.17:59787 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 104.238.30.86:63900 | ✓ 1983ms | 否 Head "https://www.ea |
+| 104.238.30.91:63900 | ✓ 1984ms | 否 Head "https://www.ea |
+| 104.238.30.58:63744 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 104.238.30.68:63744 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 104.238.30.63:63744 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 104.238.30.37:59741 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 59.153.16.214:20909 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 212.110.188.205:34403 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 212.110.188.210:34408 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 212.110.188.206:34404 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 116.107.88.217:10014 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 109.69.76.49:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 163.227.146.38:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 91.203.179.72:65056 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 77.110.125.30:65531 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 89.43.133.197:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 85.234.69.183:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 8.212.178.171:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 79.16.45.168:8081 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 202.152.44.19:8081 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 188.130.160.209:80 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 91.187.57.109:8080 | ✓ 1757ms | 否 Head "https://www.ea |
+| 94.176.3.43:7443 | 否 Head "https://financ | 否 Head "https://www.ea |
+| 209.145.60.213:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.228.253:30635 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 35.244.232.197:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 45.138.69.40:20000 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 154.31.200.185:6666 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 191.101.1.116:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 45.138.69.35:20000 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 192.73.244.36:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 149.28.195.13:32769 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.229:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.16.0.104:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 43.153.73.106:443 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.85:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 132.148.6.255:20859 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.160:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 43.153.64.66:443 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.219:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 166.62.35.102:45775 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.225:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.238.100.115:45314 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.199:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.116:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.223.45.93:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.169:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 37.1.213.4:16759 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 66.63.168.119:8000 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 185.18.250.181:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.50:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.116:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 45.56.112.189:7497 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.229:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.219:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.122:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 185.18.250.232:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 203.32.120.91:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 104.16.0.104:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.160:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 185.18.250.83:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.231:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.119:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.66:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 173.245.49.105:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.64:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 132.148.244.30:45157 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.122:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.10:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.161:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.185:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.91:6683 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 173.245.49.69:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 173.245.49.42:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.119:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.64:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.225:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.66:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.10:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 173.245.49.101:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 192.154.246.96:9000 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 192.163.200.196:24787 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.185:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.199:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.85:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.169:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.231:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.90:32931 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 173.245.49.173:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 128.199.1.8:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.129.203.245:10733 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.161:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.164.178:2493 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 198.23.143.24:6969 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.42:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 173.245.49.50:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 68.183.201.95:35275 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.171:31619 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 | 162.241.129.84:36504 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.129.202.127:12354 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 45.189.252.93:999 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 209.145.60.213:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 5.78.86.132:8080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 45.56.112.189:7497 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 162.240.212.185:59991 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 204.252.113.141:3128 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.129.203.245:10026 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 64.227.106.157:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.129.202.127:10810 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 104.129.203.245:10139 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 66.63.168.119:8000 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 107.174.231.218:8888 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 50.116.29.136:32728 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 71.19.249.97:8443 | 否 Head "https://www.ea | 否 Head "https://www.ea |
-| 162.144.83.73:60468 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.173:30021 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.94:22017 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.173:7965 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 51.222.47.97:25500 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 209.126.6.159:80 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 72.10.160.93:30963 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.236.19:24515 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.236.20:9735 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 67.43.236.21:3811 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 188.227.196.62:1080 | 否 Head "https://www.ea | 否 Head "https://www.ea |
+| 192.163.200.196:24787 | 否 Head "https://www.ea | 否 Head "https://www.ea |
 
 <!-- END PROXY TABLE -->
 
