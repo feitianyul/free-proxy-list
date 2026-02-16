@@ -50,15 +50,15 @@ Click on your preferred proxy type to get the latest list. These links always po
 
 <!-- BEGIN PROXY LIST -->
 
-Last Updated: 2026-02-16 14:41:14 UTC (2026-02-16 22:41:14 UTC+8)
+Last Updated: 2026-02-16 15:05:56 UTC (2026-02-16 23:05:56 UTC+8)
 
-**Total Proxies: 114**
+**Total Proxies: 106**
 
 Click on your preferred proxy type to get the latest list. These links always point to the most recently updated proxy files.
 
 | Protocol | Count | Download |
 |----------|-------|----------|
-| HTTP | 114 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
+| HTTP | 106 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
 
 <!-- END PROXY LIST -->
 

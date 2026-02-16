@@ -64,15 +64,15 @@
 
 <!-- BEGIN PROXY LIST -->
 
-最后更新：2026-02-16 14:41:14 UTC（2026-02-16 22:41:14 UTC+8）
+最后更新：2026-02-16 15:05:56 UTC（2026-02-16 23:05:56 UTC+8）
 
-**代理总数：114**
+**代理总数：106**
 
 点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
 
 | 协议 | 数量 | 下载 |
 |----------|-------|----------|
-| HTTP | 114 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
+| HTTP | 106 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
 
 <!-- END PROXY LIST -->
 
