@@ -1,4 +1,4 @@
-# 全量更新：每 6 小时执行一次（抓取 → 解析 → 验证 → 生成列表）
+# 全量更新：每 1 小时执行一次（抓取 → 解析 → 验证 → 生成列表）
 name: Update Lists (Full)
 
 permissions:
@@ -11,7 +11,7 @@ concurrency:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'  # 每 6 小时（0:00、6:00、12:00、18:00 UTC）
+    - cron: '0 * * * *'  # 每 1 小时整点（UTC）
 
 jobs:
   update:

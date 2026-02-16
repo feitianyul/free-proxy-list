@@ -1,4 +1,4 @@
-# 轻量复测：每 1 小时对已有列表做连通性复测，剔除失效代理
+# 轻量复测：每 30 分钟对已有列表做连通性复测，剔除失效代理
 name: Update Lists (Light - Revalidate)
 
 permissions:
@@ -11,7 +11,7 @@ concurrency:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'   # 每小时整点
+    - cron: '*/30 * * * *'   # 每 30 分钟
 
 jobs:
   revalidate:
@@ -59,12 +59,14 @@ jobs:
             git push origin "$branch"
           fi
 
+      # 若为本仓库 fork 或未启用 Wiki，需在 GitHub 仓库 Settings → General → Features 中勾选 Wiki
       - name: Push Wiki
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
+          git config --global init.defaultBranch main
           cd ../wiki
           rm -rf .git
           git init
@@ -76,6 +78,6 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "Update proxy lists (revalidate) - $timestamp"
-            git branch -M master
-            git push --force origin master
+            git push --force origin main
           fi
+        continue-on-error: true
