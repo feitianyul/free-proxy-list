@@ -11,10 +11,10 @@ import (
 
 var revalidateProtos = []string{"http", "https", "socks4", "socks5"}
 
-// RevalidateFromDir 从指定目录读取各协议列表，逐条复测（GET eastmoney + sinajs，2 秒内），通过则保留
+// RevalidateFromDir 从指定目录读取各协议列表，并发复测（eastmoney + sinajs，2 秒内），通过则保留
 func RevalidateFromDir(inputDir string) int {
 	ClearDB()
-	var total int
+	var candidates []*Proxy
 	for _, proto := range revalidateProtos {
 		path := filepath.Join(inputDir, proto+".txt")
 		buf, err := os.ReadFile(path)
@@ -32,12 +32,8 @@ func RevalidateFromDir(inputDir string) int {
 			if err != nil {
 				continue
 			}
-			if !CheckProxy(p) {
-				continue
-			}
-			Save(p)
-			total++
+			candidates = append(candidates, p)
 		}
 	}
-	return total
+	return ValidateProxiesConcurrent(candidates, GetCheckWorkers())
 }

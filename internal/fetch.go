@@ -26,7 +26,6 @@ var (
 )
 
 func Fetch(proto, src string, transformer Transformer, parser Parser) int {
-	var total int
 	resp, err := client.Get(src)
 	if err != nil {
 		return 0
@@ -34,30 +33,22 @@ func Fetch(proto, src string, transformer Transformer, parser Parser) int {
 	defer resp.Body.Close()
 
 	buf, _ := io.ReadAll(resp.Body)
-
 	s := bufio.NewScanner(bytes.NewReader(transformer(buf)))
 
-	var line string
-
+	var candidates []*Proxy
 	for s.Scan() {
-		line = strings.TrimSpace(s.Text())
+		line := strings.TrimSpace(s.Text())
 		if line == "" {
 			continue
 		}
-
 		it, err := parser(proto, line)
 		if err != nil {
 			continue
 		}
-		// 仅对 http/https/socks 代理做 GET 验证：eastmoney.com 与 sinajs.cn，延迟不超过 2 秒
-		if IsAllowedProtocol(it.Protocol) {
-			if !CheckProxy(it) {
-				continue
-			}
+		if !IsAllowedProtocol(it.Protocol) {
+			continue
 		}
-		Save(it)
-		total++
+		candidates = append(candidates, it)
 	}
-
-	return total
+	return ValidateProxiesConcurrent(candidates, GetCheckWorkers())
 }

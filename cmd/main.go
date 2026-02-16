@@ -13,16 +13,22 @@ import (
 )
 
 var (
-	dir        string
-	revalidate bool
-	inputDir   string
+	dir         string
+	revalidate  bool
+	inputDir    string
+	checkWorkers int
 )
 
 func main() {
 	flag.StringVar(&dir, "dir", ".", "work directory (output list dir)")
 	flag.BoolVar(&revalidate, "revalidate", false, "lightweight mode: read existing lists from -input-dir, re-check each proxy, write to -dir")
 	flag.StringVar(&inputDir, "input-dir", "", "input directory for -revalidate (e.g. ../wiki/lists)")
+	flag.IntVar(&checkWorkers, "check-workers", 0, "concurrent proxy check workers (0=default 500, max 1000); env GFP_CHECK_WORKERS overrides default")
 	flag.Parse()
+
+	if checkWorkers != 0 {
+		internal.CheckWorkers = checkWorkers
+	}
 
 	os.MkdirAll(filepath.Join(dir, "list"), 0755) // nolint: errcheck
 

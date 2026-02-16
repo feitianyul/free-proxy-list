@@ -31,11 +31,12 @@
 ### 本仓库特点
 
 - **仅保留三种代理**：HTTP、HTTPS、SOCKS4/5，不收录 VMess、Trojan、VLESS、SS/SSR、Hysteria 等其它协议。
-- **校验规则**：对每条 HTTP/HTTPS/SOCKS 代理使用 **GET** 请求访问以下两个地址进行验证：
+- **校验规则**：对每条 HTTP/HTTPS/SOCKS 代理访问以下两个地址进行验证（优先 HEAD，不支持则回退 GET）：
   - `https://www.eastmoney.com/`
   - `https://sinajs.cn/`  
-  两个请求均需在 **2 秒内**成功（HTTP 200）方视为通过，未通过的不写入列表。
+  两个请求均需在 **2 秒内**成功（HTTP 200）方视为通过，未通过的不写入列表。校验时**多代理并发**、**单代理内双 URL 并行**，以提升吞吐。
 - **更新频率**：列表按小时更新，保证可用代理的时效性。
+- **并发参数**：校验 worker 数可通过 `-check-workers`（如 `-check-workers=500`）或环境变量 `GFP_CHECK_WORKERS` 设置，默认 500，最大 1000。遇目标站限流可适当调低。
 
 ### 工作流程
 
