@@ -1,4 +1,4 @@
-# 全量更新：每小时执行一次（抓取 → 解析 → 验证 → 生成列表）
+# 全量更新：每 6 小时执行一次（抓取 → 解析 → 验证 → 生成列表）
 name: Update Lists (Full)
 
 permissions:
@@ -11,11 +11,12 @@ concurrency:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # 每小时整点
+    - cron: '0 */6 * * *'  # 每 6 小时（0:00、6:00、12:00、18:00 UTC）
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 720  # 跑满 12 小时才因超时取消
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
