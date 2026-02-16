@@ -31,9 +31,6 @@ func Load(proto string, content []byte) error {
 				continue
 			}
 
-			// #region agent log
-			DebugLog("load.go:Load", "about to Fetch", map[string]interface{}{"src": src, "proto": proto}, "H3")
-			// #endregion
 			log.Printf("> %v %s", Fetch(proto, src, transformer, parser), src)
 		}
 
