@@ -47,8 +47,8 @@ func main() {
 	internal.DebugLog("cmd/main.go:main", "full run started", map[string]interface{}{"dir": dir}, "H5")
 	// #endregion
 
-	// 只处理 http、https、socks4、socks5 四种代理源
-	allowedSources := map[string]bool{"http": true, "https": true, "socks4": true, "socks5": true}
+	// 只处理 http、https 两种代理源
+	allowedSources := map[string]bool{"http": true, "https": true}
 
 	err := fs.WalkDir(os.DirFS(filepath.Join(dir, "sources")), ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {

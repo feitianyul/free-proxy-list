@@ -3,7 +3,6 @@ package internal
 import (
 	"context"
 	"errors"
-	"net"
 	"net/http"
 	"net/url"
 	"os"
@@ -11,8 +10,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"h12.io/socks"
 )
 
 func init() {
@@ -39,10 +36,10 @@ var CheckURLs = []string{
 	"https://sinajs.cn/",
 }
 
-// IsAllowedProtocol 是否为允许保留的代理类型：http、https、socks4、socks5
+// IsAllowedProtocol 是否为允许保留的代理类型：仅 http、https
 func IsAllowedProtocol(protocol string) bool {
 	switch strings.ToLower(protocol) {
-	case "http", "https", "socks4", "socks4a", "socks5", "socks5h":
+	case "http", "https":
 		return true
 	default:
 		return false
@@ -126,32 +123,6 @@ func httpClientViaProxy(p *Proxy, proxyURL string) (*http.Client, error) {
 		}
 		tr := &http.Transport{
 			Proxy:                 http.ProxyURL(u),
-			TLSHandshakeTimeout:   checkTimeout,
-			ResponseHeaderTimeout: checkTimeout,
-		}
-		return &http.Client{Transport: tr}, nil
-	case "socks4", "socks4a", "socks5", "socks5h":
-		// h12.io/socks 支持 socks5、socks4、socks4a
-		socksScheme := "socks5"
-		if scheme == "socks5h" {
-			socksScheme = "socks5"
-		} else if scheme == "socks4" {
-			socksScheme = "socks4"
-		} else if scheme == "socks4a" {
-			socksScheme = "socks4a"
-		}
-		addr := net.JoinHostPort(p.IP, strconv.Itoa(p.Port))
-		uri := socksScheme + "://" + addr
-		if p.User != "" {
-			if p.Passwd != "" {
-				uri = socksScheme + "://" + url.UserPassword(p.User, p.Passwd).String() + "@" + addr
-			} else {
-				uri = socksScheme + "://" + p.User + "@" + addr
-			}
-		}
-		dial := socks.Dial(uri + "?timeout=" + checkTimeout.String())
-		tr := &http.Transport{
-			Dial:                  dial,
 			TLSHandshakeTimeout:   checkTimeout,
 			ResponseHeaderTimeout: checkTimeout,
 		}

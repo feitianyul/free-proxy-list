@@ -22,7 +22,7 @@ func ClearDB() {
 	db = make(map[string]*Proxy)
 }
 
-// 只保留 http、https、socks4、socks5 三种代理
+// 只保留 http、https 两种代理
 func Save(it *Proxy) {
 	if !IsAllowedProtocol(it.Protocol) {
 		return

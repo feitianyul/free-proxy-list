@@ -5,7 +5,6 @@ go 1.25
 require (
 	github.com/cnlangzi/proxyclient v0.0.21
 	github.com/stretchr/testify v1.11.1
-	h12.io/socks v1.0.3
 )
 
 require (

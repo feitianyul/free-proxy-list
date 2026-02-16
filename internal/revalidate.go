@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-var revalidateProtos = []string{"http", "https", "socks4", "socks5"}
+var revalidateProtos = []string{"http", "https"}
 
 // RevalidateFromDir 从指定目录读取各协议列表，并发复测（eastmoney + sinajs，2 秒内），通过则保留
 func RevalidateFromDir(inputDir string) int {

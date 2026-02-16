@@ -26,12 +26,12 @@
 
 ## 📖 项目说明
 
-本项目为开源免费代理聚合与校验工具，从互联网公开源拉取代理并**仅保留 HTTP、HTTPS、SOCKS4、SOCKS5** 三种类型，经校验后生成列表，供开发者、研究人员等使用。
+本项目为开源免费代理聚合与校验工具，从互联网公开源拉取代理并**仅保留 HTTP、HTTPS** 两种类型，经校验后生成列表，供开发者、研究人员等使用。
 
 ### 本仓库特点
 
-- **仅保留三种代理**：HTTP、HTTPS、SOCKS4/5，不收录 VMess、Trojan、VLESS、SS/SSR、Hysteria 等其它协议。
-- **校验规则**：对每条 HTTP/HTTPS/SOCKS 代理访问以下两个地址进行验证（优先 HEAD，不支持则回退 GET）：
+- **仅保留两种代理**：HTTP、HTTPS，不收录 SOCKS、VMess、Trojan、VLESS、SS/SSR、Hysteria 等其它协议。
+- **校验规则**：对每条 HTTP/HTTPS 代理访问以下两个地址进行验证（优先 HEAD，不支持则回退 GET）：
   - `https://www.eastmoney.com/`
   - `https://sinajs.cn/`  
   两个请求均需在 **2 秒内**成功（HTTP 200）方视为通过，未通过的不写入列表。校验时**多代理并发**、**单代理内双 URL 并行**，以提升吞吐。
@@ -40,11 +40,11 @@
 
 ### 工作流程
 
-1. **拉取**：从 `sources/` 目录下配置的源（仅处理 `http.txt`、`https.txt`、`socks4.txt`、`socks5.txt`）拉取原始代理数据，支持动态 URL 及 Base64 等格式。
+1. **拉取**：从 `sources/` 目录下配置的源（仅处理 `http.txt`、`https.txt`）拉取原始代理数据，支持动态 URL 及 Base64 等格式。
 2. **解析与规范化**：将原始数据解析为标准代理格式（协议、IP、端口、认证等）。
-3. **校验**：对 HTTP/HTTPS/SOCKS 代理通过上述 GET 验证与 2 秒超时规则进行筛选。
+3. **校验**：对 HTTP/HTTPS 代理通过上述验证与 2 秒超时规则进行筛选。
 4. **去重与存储**：通过校验的代理去重后写入内存。
-5. **生成列表**：按协议生成 `list/` 目录下的 `http.txt`、`https.txt`、`socks4.txt`、`socks5.txt`，并更新统计与 README 中的下载表格。
+5. **生成列表**：按协议生成 `list/` 目录下的 `http.txt`、`https.txt`，并更新统计与 README 中的下载表格。
 
 自动化由 GitHub Actions 执行：**全量流程**（抓取→解析→验证→生成列表）**每 6 小时**运行一次；**轻量复测**（对已有列表做连通性复测、剔除失效代理）**每 30 分钟**运行一次。全量任务最长运行 12 小时，超时才会取消。下表「最后更新」时间为 UTC 及 UTC+8。
 
@@ -53,8 +53,8 @@
 | 类型 | 格式 | 示例 |
 | :--- | :--- | :--- |
 | **HTTP/HTTPS** | `http://ip:port` | `http://1.2.3.4:8080` |
+| | `https://ip:port` | `https://1.2.3.4:8080` |
 | | `http://user:pass@ip:port` | `http://user:pass@1.2.3.4:8080` |
-| **SOCKS4/5** | `socks5://ip:port` | `socks5://1.2.3.4:1080` |
 
 ---
 
