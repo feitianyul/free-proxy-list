@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/每30分钟更新-通过-success">  
+  <img src="https://img.shields.io/badge/每1小时更新-通过-success">  
   <br>
   <img src="https://img.shields.io/website/https/getfreeproxy.com.svg">
   <img src="https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/total.svg">
@@ -46,7 +46,7 @@
 4. **去重与存储**：通过校验的代理去重后写入内存。
 5. **生成列表**：按协议生成 `list/` 目录下的 `http.txt`、`https.txt`，并更新统计与 README 中的下载表格。
 
-自动化由 GitHub Actions 执行：**全量流程**（抓取→解析→验证→生成列表）**每 6 小时**运行一次；**轻量复测**（对已有列表做连通性复测、剔除失效代理）**每 30 分钟**运行一次。全量任务最长运行 12 小时，超时才会取消。下表「最后更新」时间为 UTC 及 UTC+8。
+自动化由 GitHub Actions 执行：**全量流程**（抓取→解析→验证→生成列表）**每 6 小时**运行一次；**轻量复测**（对已有列表做连通性复测、剔除失效代理）**每 1 小时**运行一次。全量任务最长运行 12 小时，超时才会取消。下表「最后更新」时间为 UTC 及 UTC+8。
 
 ### 支持的代理格式示例
 

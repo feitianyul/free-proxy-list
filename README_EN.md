@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Updated_Every_30_Minutes-passing-success">  
+  <img src="https://img.shields.io/badge/Updated_Every_Hour-passing-success">  
   <br>
   <img src="https://img.shields.io/website/https/getfreeproxy.com.svg">
   <img src="https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/total.svg">
@@ -32,7 +32,7 @@ This project runs on a simple yet powerful automated workflow:
 4.  **Generate Lists**: The application generates clean, protocol-specific proxy lists (`http.txt`, `https.txt`) and saves them in the `list/` directory.
 5.  **Update Badges**: SVG badges are generated to display the count of available proxies for each protocol.
 
-This entire process is automated using GitHub Actions: **full pipeline** (fetch → parse → validate → generate) runs **every 6 hours**; **light revalidate** (re-check existing proxies, remove dead ones) runs **every 30 minutes**. Full runs have a 12-hour timeout. The "Last Updated" time in the table below is in UTC and UTC+8.
+This entire process is automated using GitHub Actions: **full pipeline** (fetch → parse → validate → generate) runs **every 6 hours**; **light revalidate** (re-check existing proxies, remove dead ones) runs **every hour**. Full runs have a 12-hour timeout. The "Last Updated" time in the table below is in UTC and UTC+8.
 
 ## 📋 Proxy Formats
 
