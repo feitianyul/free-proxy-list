@@ -91,7 +91,6 @@ func main() {
 		return nil
 	})
 
-
 	internal.WriteTo(filepath.Join(dir, "list"))
 
 	if err != nil {
