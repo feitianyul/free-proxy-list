@@ -23,8 +23,8 @@ func init() {
 
 const (
 	checkTimeout        = 2 * time.Second
-	defaultCheckWorkers = 1000
-	maxCheckWorkers     = 1000
+	defaultCheckWorkers = 2000
+	maxCheckWorkers     = 4000
 )
 
 // CheckWorkers 并发校验的 worker 数量，由 main 通过 flag/env 设置，未设置时用 GetCheckWorkers() 的默认值

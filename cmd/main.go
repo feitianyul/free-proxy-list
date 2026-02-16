@@ -23,7 +23,7 @@ func main() {
 	flag.StringVar(&dir, "dir", ".", "work directory (output list dir)")
 	flag.BoolVar(&revalidate, "revalidate", false, "lightweight mode: read existing lists from -input-dir, re-check each proxy, write to -dir")
 	flag.StringVar(&inputDir, "input-dir", "", "input directory for -revalidate (e.g. ../wiki/lists)")
-	flag.IntVar(&checkWorkers, "check-workers", 0, "concurrent proxy check workers (0=default 1000, max 1000); env GFP_CHECK_WORKERS overrides default")
+	flag.IntVar(&checkWorkers, "check-workers", 0, "concurrent proxy check workers (0=default 2000, max 4000); env GFP_CHECK_WORKERS overrides default")
 	flag.Parse()
 
 	if checkWorkers != 0 {
