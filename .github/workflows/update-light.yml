@@ -33,7 +33,7 @@ jobs:
           git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git" ../wiki || true
           mkdir -p ../wiki/lists
 
-      - name: Revalidate proxies (GET eastmoney + sinajs, 2s)
+      - name: Revalidate proxies (eastmoney + finance.sina.com.cn, 2s)
         run: |
           go build -o gfp ./cmd/main.go
           ./gfp -revalidate -input-dir ../wiki/lists -dir .
@@ -42,6 +42,7 @@ jobs:
         run: |
           mkdir -p ../wiki/lists
           cp -f list/*.txt list/total.svg ../wiki/lists/ 2>/dev/null || true
+          # 含 http.txt、https.txt、http+s.txt、total.svg
 
       - name: Commit README and push
         env:
@@ -53,7 +54,9 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "chore(list): Light revalidate proxy list - $timestamp"
-            git push
+            branch=$(git branch --show-current)
+            git pull --rebase origin "$branch"
+            git push origin "$branch"
           fi
 
       - name: Push Wiki

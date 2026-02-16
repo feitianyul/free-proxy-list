@@ -50,5 +50,5 @@ func Fetch(proto, src string, transformer Transformer, parser Parser) int {
 		}
 		candidates = append(candidates, it)
 	}
-	return ValidateProxiesConcurrent(candidates, GetCheckWorkers())
+	return ValidateProxiesDual(candidates, GetCheckWorkers())
 }

@@ -69,12 +69,30 @@ func WriteTo(dir string) {
 		file.WriteString(it.String() + "\n") // nolint: errcheck
 	}
 
-	// Generate total.svg and update README.md
-	WriteTotalAndUpdateReadme(dir, counters)
+	// 双协议结果：写 http+s.txt（同时通过 HTTP 与 HTTPS 的代理）
+	results := GetDualResults()
+	var httpPlusSCount int
+	httpPlusSName := "http+s.txt"
+	if f, err := os.Create(filepath.Join(dir, httpPlusSName)); err == nil {
+		for _, r := range results {
+			if r.HTTPOk && r.HTTPSOk {
+				httpPlusSCount++
+				f.WriteString("http://" + r.Addr() + "\n") // nolint: errcheck
+			}
+		}
+		f.Sync()  // nolint: errcheck
+		f.Close()
+	}
+	if httpPlusSCount > 0 {
+		counters["http+s"] = httpPlusSCount
+	}
+
+	// Generate total.svg and update README (list section + proxy table)
+	WriteTotalAndUpdateReadme(dir, counters, results)
 }
 
-func WriteTotalAndUpdateReadme(dir string, counters map[string]int) {
-	// Calculate total
+func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*ProxyResult) {
+	// Calculate total (各协议数量之和，不含重复；total 用于 badge)
 	total := 0
 	protocols := make([]string, 0, len(counters))
 	for proto, count := range counters {
@@ -95,11 +113,12 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int) {
 		_ = os.WriteFile(outPath, resp.Bytes(), 0644) // nolint: errcheck
 	}
 
-	// Build table content for README replacement
+	// Build protocol table for README (协议 | 数量 | 下载)，含 http+s
 	var tableContent strings.Builder
 	for _, proto := range protocols {
 		count := counters[proto]
-		url := fmt.Sprintf("https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/%s.txt", proto)
+		fileName := proto + ".txt"
+		url := fmt.Sprintf("https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/%s", fileName)
 		tableContent.WriteString(fmt.Sprintf("| %s | %d | %s |\n",
 			strings.ToUpper(proto),
 			count,
@@ -124,6 +143,8 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int) {
 |----------|-------|----------|
 %s`, tsUTC, tsUTC8, total, tableContent.String())
 		replaceReadmeSection(readmePath, string(readmeContent), startMarker, endMarker, newSectionZH)
+		readmeContent, _ = os.ReadFile(readmePath)
+		writeReadmeProxyTable(readmePath, string(readmeContent), results, true)
 	}
 
 	// Update README_EN.md (English)
@@ -141,7 +162,48 @@ Click on your preferred proxy type to get the latest list. These links always po
 |----------|-------|----------|
 %s`, tsUTC, tsUTC8, total, tableContent.String())
 		replaceReadmeSection(readmeENPath, string(readmeENContent), startMarker, endMarker, newSection)
+		readmeENContent, _ = os.ReadFile(readmeENPath)
+		writeReadmeProxyTable(readmeENPath, string(readmeENContent), results, false)
 	}
+}
+
+const tableErrMaxLen = 20
+
+func writeReadmeProxyTable(readmePath, content string, results []*ProxyResult, zh bool) {
+	startMarker := "<!-- BEGIN PROXY TABLE -->"
+	endMarker := "<!-- END PROXY TABLE -->"
+	startIdx := strings.Index(content, startMarker)
+	endIdx := strings.Index(content, endMarker)
+	if startIdx == -1 || endIdx == -1 {
+		return
+	}
+	maxRows := 100
+	if len(results) < maxRows {
+		maxRows = len(results)
+	}
+	var table strings.Builder
+	if zh {
+		table.WriteString("| 代理地址 | HTTP | HTTPS |\n|----------|------|--------|\n")
+	} else {
+		table.WriteString("| Address | HTTP | HTTPS |\n|---------|------|--------|\n")
+	}
+	for i := 0; i < maxRows; i++ {
+		r := results[i]
+		httpCell := formatCell(r.HTTPOk, r.HTTPElapsed, r.HTTPErr)
+		httpsCell := formatCell(r.HTTPSOk, r.HTTPSElapsed, r.HTTPSErr)
+		table.WriteString(fmt.Sprintf("| %s | %s | %s |\n", r.Addr(), httpCell, httpsCell))
+	}
+	before := content[:startIdx+len(startMarker)]
+	after := content[endIdx:]
+	newContent := before + "\n" + table.String() + "\n" + after
+	_ = os.WriteFile(readmePath, []byte(newContent), 0644) // nolint: errcheck
+}
+
+func formatCell(ok bool, elapsed time.Duration, errMsg string) string {
+	if ok {
+		return fmt.Sprintf("✓ %dms", elapsed.Milliseconds())
+	}
+	return "否 " + TruncateErr(errMsg, tableErrMaxLen)
 }
 
 func replaceReadmeSection(readmePath, content, startMarker, endMarker, newSection string) {

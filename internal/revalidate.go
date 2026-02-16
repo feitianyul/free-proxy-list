@@ -11,9 +11,10 @@ import (
 
 var revalidateProtos = []string{"http", "https"}
 
-// RevalidateFromDir 从指定目录读取各协议列表，并发复测（eastmoney + sinajs，2 秒内），通过则保留
+// RevalidateFromDir 从指定目录读取各协议列表，双协议并发复测（eastmoney + sina 财经，2 秒内），通过则保留
 func RevalidateFromDir(inputDir string) int {
 	ClearDB()
+	ClearDualResults()
 	var candidates []*Proxy
 	for _, proto := range revalidateProtos {
 		path := filepath.Join(inputDir, proto+".txt")
@@ -35,5 +36,5 @@ func RevalidateFromDir(inputDir string) int {
 			candidates = append(candidates, p)
 		}
 	}
-	return ValidateProxiesConcurrent(candidates, GetCheckWorkers())
+	return ValidateProxiesDual(candidates, GetCheckWorkers())
 }

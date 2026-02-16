@@ -59,6 +59,12 @@ Click on your preferred proxy type to get the latest list. These links always po
 | Protocol | Count | Download |
 |----------|-------|----------|
 
+<!-- BEGIN PROXY TABLE -->
+| Address | HTTP | HTTPS |
+|---------|------|--------|
+
+<!-- END PROXY TABLE -->
+
 <!-- END PROXY LIST -->
 
 ## 🤝 Contributing
