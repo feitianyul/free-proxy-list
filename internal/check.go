@@ -23,7 +23,7 @@ func init() {
 
 const (
 	checkTimeout        = 2 * time.Second
-	defaultCheckWorkers = 2000
+	defaultCheckWorkers = 4000
 	maxCheckWorkers     = 4000
 )
 
