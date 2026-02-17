@@ -1,4 +1,4 @@
-module github.com/gfpcom/free-proxy-list
+module github.com/feitianyul/free-proxy-list
 
 go 1.25
 

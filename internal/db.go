@@ -128,7 +128,7 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*P
 	for _, proto := range protocolOrder {
 		count := counters[proto]
 		fileName := proto + ".txt"
-		url := fmt.Sprintf("https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/%s", fileName)
+		url := fmt.Sprintf("https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/%s", fileName)
 		tableContent.WriteString(fmt.Sprintf("| %s | %d | %s |\n",
 			strings.ToUpper(proto),
 			count,

@@ -6,9 +6,9 @@
   <img src="https://img.shields.io/badge/Updated_Every_Hour-passing-success">  
   <br>
   <img src="https://img.shields.io/website/https/getfreeproxy.com.svg">
-  <img src="https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/total.svg">
-  <img src="https://img.shields.io/github/last-commit/gfpcom/free-proxy-list.svg">
-  <img src="https://img.shields.io/github/license/gfpcom/free-proxy-list.svg">
+  <img src="https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/total.svg">
+  <img src="https://img.shields.io/github/last-commit/feitianyul/free-proxy-list.svg">
+  <img src="https://img.shields.io/github/license/feitianyul/free-proxy-list.svg">
   
   <br>
   <br>
@@ -58,9 +58,9 @@ Click on your preferred proxy type to get the latest list. These links always po
 
 | Protocol | Count | Download |
 |----------|-------|----------|
-| HTTP | 150 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http.txt |
-| HTTPS | 0 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/https.txt |
-| HTTP+S | 0 | https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/http+s.txt |
+| HTTP | 98 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
+| HTTPS | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/https.txt |
+| HTTP+S | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http+s.txt |
 
 <!-- END PROXY LIST -->
 
@@ -88,4 +88,4 @@ If you find this project useful, please consider supporting it. It helps us gain
 This repository is released under the MIT license. See [LICENSE](LICENSE) for details.
 
 ## Stars
-[![Star History Chart](https://api.star-history.com/svg?repos=gfpcom/free-proxy-list&type=Date)](https://star-history.com/#gfpcom/free-proxy-list&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=feitianyul/free-proxy-list&type=Date)](https://star-history.com/#feitianyul/free-proxy-list&Date)

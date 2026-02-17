@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gfpcom/free-proxy-list/internal"
+	"github.com/feitianyul/free-proxy-list/internal"
 )
 
 var (
