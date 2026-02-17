@@ -35,6 +35,8 @@ var CheckURLs = []string{
 	"https://www.eastmoney.com/",
 	"https://www.sse.com.cn/",
 	"https://finance.sina.com.cn/",
+	"https://web.ifzq.gtimg.cn/",
+	"https://proxy.finance.qq.com/",
 }
 
 // IsAllowedProtocol 是否为允许保留的代理类型：仅 http、https
