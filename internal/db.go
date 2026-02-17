@@ -79,25 +79,36 @@ func WriteTo(dir string) {
 	}
 
 	results := GetDualResults()
-	// 通过测试：与表格同序，先构建 passedResults 再写 passed.txt（所有通过测试的 IP）
+	// 通过测试：与表格同序，先构建 passedResults 再按 IP:port 去重，再写 passed.txt
 	passedResults := make([]*ProxyResult, 0, len(results))
 	for _, r := range results {
 		if r.HTTPOk || r.HTTPSOk {
 			passedResults = append(passedResults, r)
 		}
 	}
+	// 按代理地址去重，保留首次出现（与表格、passed.txt 一致）
+	seen := make(map[string]bool)
+	passedResultsDedup := make([]*ProxyResult, 0, len(passedResults))
+	for _, r := range passedResults {
+		addr := r.Addr()
+		if seen[addr] {
+			continue
+		}
+		seen[addr] = true
+		passedResultsDedup = append(passedResultsDedup, r)
+	}
 	passedFileName := "passed.txt"
 	if f, err := os.Create(filepath.Join(dir, passedFileName)); err == nil {
-		for _, r := range passedResults {
+		for _, r := range passedResultsDedup {
 			f.WriteString("http://" + r.Addr() + "\n") // nolint: errcheck
 		}
 		f.Sync()  // nolint: errcheck
 		f.Close()
 	}
-	counters["passed"] = len(passedResults)
+	counters["passed"] = len(passedResultsDedup)
 
 	// Generate total.svg and update README (list section + proxy table)
-	WriteTotalAndUpdateReadme(dir, counters, results, passedResults)
+	WriteTotalAndUpdateReadme(dir, counters, results, passedResultsDedup)
 }
 
 func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*ProxyResult, passedResults []*ProxyResult) {
