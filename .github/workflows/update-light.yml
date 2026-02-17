@@ -35,6 +35,7 @@ jobs:
 
       - name: Revalidate proxies (eastmoney + finance.sina.com.cn, 2s)
         run: |
+          go mod tidy
           go build -o gfp ./cmd/main.go
           ./gfp -revalidate -input-dir ../wiki/lists -dir .
 
