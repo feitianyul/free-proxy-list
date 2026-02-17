@@ -224,20 +224,36 @@ func writeReadmeProxyTable(readmePath, content string, results []*ProxyResult, z
 	}
 	var table strings.Builder
 	if zh {
-		table.WriteString("| 代理地址 | HTTP | HTTPS |\n|----------|------|--------|\n")
+		table.WriteString("| 代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议 |\n")
+		table.WriteString("|----------|---------------|------------|----------------------|------|\n")
 	} else {
-		table.WriteString("| Address | HTTP | HTTPS |\n|---------|------|--------|\n")
+		table.WriteString("| Address | eastmoney.com | sse.com.cn | finance.sina.com.cn | Protocol |\n")
+		table.WriteString("|---------|---------------|------------|----------------------|----------|\n")
 	}
 	for i := 0; i < maxRows; i++ {
 		r := results[i]
-		httpCell := formatCell(r.HTTPOk, r.HTTPElapsed, r.HTTPErr)
-		httpsCell := formatCell(r.HTTPSOk, r.HTTPSElapsed, r.HTTPSErr)
-		table.WriteString(fmt.Sprintf("| %s | %s | %s |\n", r.Addr(), httpCell, httpsCell))
+		elapsed := r.HTTPElapsed
+		if r.Protocol == "https" && len(r.HTTPSElapsed) >= 3 {
+			elapsed = r.HTTPSElapsed
+		} else if (r.Protocol == "http" || r.Protocol == "http/s") && len(r.HTTPElapsed) >= 3 {
+			elapsed = r.HTTPElapsed
+		}
+		c1 := formatCellElapsed(elapsed, 0)
+		c2 := formatCellElapsed(elapsed, 1)
+		c3 := formatCellElapsed(elapsed, 2)
+		table.WriteString(fmt.Sprintf("| %s | %s | %s | %s | %s |\n", r.Addr(), c1, c2, c3, r.Protocol))
 	}
 	before := content[:startIdx+len(startMarker)]
 	after := content[endIdx:]
 	newContent := before + "\n" + table.String() + "\n" + after
 	_ = os.WriteFile(readmePath, []byte(newContent), 0644) // nolint: errcheck
+}
+
+func formatCellElapsed(elapsed []time.Duration, i int) string {
+	if i < len(elapsed) {
+		return fmt.Sprintf("✓ %dms", elapsed[i].Milliseconds())
+	}
+	return "否"
 }
 
 func formatCell(ok bool, elapsed time.Duration, errMsg string) string {

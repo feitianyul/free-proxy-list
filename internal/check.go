@@ -30,9 +30,10 @@ const (
 // CheckWorkers 并发校验的 worker 数量，由 main 通过 flag/env 设置，未设置时用 GetCheckWorkers() 的默认值
 var CheckWorkers int
 
-// CheckURLs 用于验证代理的访问地址（eastmoney + sina 财经），两个都需在 2 秒内成功（使用 HEAD 减少传输）
+// CheckURLs 三域名验证（eastmoney + sse + sina 财经），均需在 2 秒内成功（使用 HEAD 减少传输）
 var CheckURLs = []string{
 	"https://www.eastmoney.com/",
+	"https://www.sse.com.cn/",
 	"https://finance.sina.com.cn/",
 }
 
@@ -169,48 +170,44 @@ func GetCheckWorkers() int {
 	return n
 }
 
-// CheckProxyAsHTTP 以 HTTP 代理方式校验（eastmoney + finance.sina.com.cn，2s 超时），返回是否通过、耗时、失败时的简短错误
-func CheckProxyAsHTTP(p *Proxy) (ok bool, elapsed time.Duration, errMsg string) {
+// CheckProxyAsHTTP 以 HTTP 代理方式校验三域名（eastmoney + sse + sina），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
+func CheckProxyAsHTTP(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string) {
 	if p == nil {
-		return false, 0, "nil proxy"
+		return false, nil, "nil proxy"
 	}
 	orig := p.Protocol
 	p.Protocol = "http"
 	proxyURL := p.String()
 	p.Protocol = orig
-	var maxElapsed time.Duration
-	for _, targetURL := range CheckURLs {
+	elapsed = make([]time.Duration, len(CheckURLs))
+	for i, targetURL := range CheckURLs {
 		oneOk, oneElapsed, oneErr := checkOneWithResult(p, proxyURL, targetURL)
-		if oneElapsed > maxElapsed {
-			maxElapsed = oneElapsed
-		}
+		elapsed[i] = oneElapsed
 		if !oneOk {
-			return false, maxElapsed, oneErr
+			return false, elapsed, oneErr
 		}
 	}
-	return true, maxElapsed, ""
+	return true, elapsed, ""
 }
 
-// CheckProxyAsHTTPS 以 HTTPS 代理方式校验（eastmoney + finance.sina.com.cn，2s 超时），返回是否通过、耗时、失败时的简短错误
-func CheckProxyAsHTTPS(p *Proxy) (ok bool, elapsed time.Duration, errMsg string) {
+// CheckProxyAsHTTPS 以 HTTPS 代理方式校验三域名（eastmoney + sse + sina），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
+func CheckProxyAsHTTPS(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string) {
 	if p == nil {
-		return false, 0, "nil proxy"
+		return false, nil, "nil proxy"
 	}
 	orig := p.Protocol
 	p.Protocol = "https"
 	proxyURL := p.String()
 	p.Protocol = orig
-	var maxElapsed time.Duration
-	for _, targetURL := range CheckURLs {
+	elapsed = make([]time.Duration, len(CheckURLs))
+	for i, targetURL := range CheckURLs {
 		oneOk, oneElapsed, oneErr := checkOneWithResult(p, proxyURL, targetURL)
-		if oneElapsed > maxElapsed {
-			maxElapsed = oneElapsed
-		}
+		elapsed[i] = oneElapsed
 		if !oneOk {
-			return false, maxElapsed, oneErr
+			return false, elapsed, oneErr
 		}
 	}
-	return true, maxElapsed, ""
+	return true, elapsed, ""
 }
 
 // ValidateProxiesConcurrent 并发校验 proxies，通过者由单 goroutine 调用 Save，返回通过数量
@@ -282,10 +279,19 @@ func ValidateProxiesDual(proxies []*Proxy, workers int) int {
 			for p := range taskCh {
 				httpOk, httpElapsed, httpErr := CheckProxyAsHTTP(p)
 				httpsOk, httpsElapsed, httpsErr := CheckProxyAsHTTPS(p)
+				protocol := ""
+				if httpOk && httpsOk {
+					protocol = "http/s"
+				} else if httpOk {
+					protocol = "http"
+				} else if httpsOk {
+					protocol = "https"
+				}
 				r := &ProxyResult{
 					IP: p.IP, Port: p.Port, User: p.User, Passwd: p.Passwd,
 					HTTPOk: httpOk, HTTPElapsed: httpElapsed, HTTPErr: httpErr,
 					HTTPSOk: httpsOk, HTTPSElapsed: httpsElapsed, HTTPSErr: httpsErr,
+					Protocol: protocol,
 				}
 				resultCh <- r
 			}

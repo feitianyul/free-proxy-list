@@ -31,10 +31,11 @@
 ### 本仓库特点
 
 - **仅保留两种代理**：HTTP、HTTPS，不收录 SOCKS、VMess、Trojan、VLESS、SS/SSR、Hysteria 等其它协议。
-- **校验规则**：对每条 HTTP/HTTPS 代理访问以下两个地址进行验证（优先 HEAD，不支持则回退 GET）：
+- **校验规则**：三域名均通过且每域延迟 < 2000ms。对每条代理访问以下三个地址验证（优先 HEAD，不支持则回退 GET）：
   - `https://www.eastmoney.com/`
+  - `https://www.sse.com.cn/`
   - `https://finance.sina.com.cn/`（新浪财经）
-  两个请求均需在 **2 秒内**成功（HTTP 200）方视为通过，未通过的不写入列表。校验时**多代理并发**、**单代理内双 URL 并行**，以提升吞吐。每个代理会分别以 **HTTP 代理** 和 **HTTPS 代理** 各测一次，并生成「代理地址 | HTTP | HTTPS」结果表格与 `http+s.txt`（同时支持两种协议的代理）。
+  三个请求均需在 **2 秒内**成功（HTTP 200）方视为通过。每个代理分别以 **HTTP 代理** 和 **HTTPS 代理** 各测一次；**协议** 写入 meta：只通 HTTP→`http`，只通 HTTPS→`https`，两个都通→`http/s`。校验时**多代理并发**、**单代理内三域名并行**。列表直显：表格列为「代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议」。
 - **更新频率**：列表按小时更新，保证可用代理的时效性。
 - **并发参数**：校验 worker 数可通过 `-check-workers`（如 `-check-workers=4000`）或环境变量 `GFP_CHECK_WORKERS` 设置，默认 4000，最大 4000。遇目标站限流可适当调低。
 
@@ -79,7 +80,7 @@
 
 <!-- END PROXY LIST -->
 
-以下为**通过测试**的代理前 100 条预览（代理地址 | HTTP | HTTPS），便于查看双协议可用性。完整列表请使用上方表格中的「**通过测试 (Passed)**」下载。
+以下为**通过测试**的代理前 100 条预览（三域名均通过且每域延迟 < 2000ms；代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议）。完整列表请使用上方表格中的「**通过测试 (Passed)**」下载。
 
 <!-- BEGIN PROXY TABLE -->
 | 代理地址 | HTTP | HTTPS |
