@@ -212,24 +212,26 @@ func writeReadmeProxyTable(readmePath, content string, results []*ProxyResult, z
 	}
 	var table strings.Builder
 	if zh {
-		table.WriteString("| 代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议 |\n")
-		table.WriteString("|----------|---------------|------------|----------------------|------|\n")
+		table.WriteString("| 代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | web.ifzq.gtimg.cn | proxy.finance.qq.com | 协议 |\n")
+		table.WriteString("|----------|---------------|------------|----------------------|-------------------|---------------------|------|\n")
 	} else {
-		table.WriteString("| Address | eastmoney.com | sse.com.cn | finance.sina.com.cn | Protocol |\n")
-		table.WriteString("|---------|---------------|------------|----------------------|----------|\n")
+		table.WriteString("| Address | eastmoney.com | sse.com.cn | finance.sina.com.cn | web.ifzq.gtimg.cn | proxy.finance.qq.com | Protocol |\n")
+		table.WriteString("|---------|---------------|------------|----------------------|-------------------|---------------------|----------|\n")
 	}
 	for i := 0; i < maxRows; i++ {
 		r := results[i]
 		elapsed := r.HTTPElapsed
-		if r.Protocol == "https" && len(r.HTTPSElapsed) >= 3 {
+		if r.Protocol == "https" && len(r.HTTPSElapsed) >= 5 {
 			elapsed = r.HTTPSElapsed
-		} else if (r.Protocol == "http" || r.Protocol == "http/s") && len(r.HTTPElapsed) >= 3 {
+		} else if (r.Protocol == "http" || r.Protocol == "http/s") && len(r.HTTPElapsed) >= 5 {
 			elapsed = r.HTTPElapsed
 		}
 		c1 := formatCellElapsed(elapsed, 0)
 		c2 := formatCellElapsed(elapsed, 1)
 		c3 := formatCellElapsed(elapsed, 2)
-		table.WriteString(fmt.Sprintf("| %s | %s | %s | %s | %s |\n", r.Addr(), c1, c2, c3, r.Protocol))
+		c4 := formatCellElapsed(elapsed, 3)
+		c5 := formatCellElapsed(elapsed, 4)
+		table.WriteString(fmt.Sprintf("| %s | %s | %s | %s | %s | %s | %s |\n", r.Addr(), c1, c2, c3, c4, c5, r.Protocol))
 	}
 	before := content[:startIdx+len(startMarker)]
 	after := content[endIdx:]

@@ -30,7 +30,7 @@ const (
 // CheckWorkers 并发校验的 worker 数量，由 main 通过 flag/env 设置，未设置时用 GetCheckWorkers() 的默认值
 var CheckWorkers int
 
-// CheckURLs 三域名验证（eastmoney + sse + sina 财经），均需在 2 秒内成功（使用 HEAD 减少传输）
+// CheckURLs 五域名验证（eastmoney + sse + sina + ifzq.gtimg + finance.qq），均需在 2 秒内成功（使用 HEAD 减少传输）
 var CheckURLs = []string{
 	"https://www.eastmoney.com/",
 	"https://www.sse.com.cn/",
@@ -172,7 +172,7 @@ func GetCheckWorkers() int {
 	return n
 }
 
-// CheckProxyAsHTTP 以 HTTP 代理方式校验三域名（eastmoney + sse + sina），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
+// CheckProxyAsHTTP 以 HTTP 代理方式校验五域名（eastmoney + sse + sina + ifzq.gtimg + finance.qq），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
 func CheckProxyAsHTTP(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string) {
 	if p == nil {
 		return false, nil, "nil proxy"

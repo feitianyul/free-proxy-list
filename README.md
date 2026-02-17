@@ -31,11 +31,13 @@
 ### 本仓库特点
 
 - **仅保留两种代理**：HTTP、HTTPS，不收录 SOCKS、VMess、Trojan、VLESS、SS/SSR、Hysteria 等其它协议。
-- **校验规则**：三域名均通过且每域延迟 < 2000ms。对每条代理访问以下三个地址验证（优先 HEAD，不支持则回退 GET）：
+- **校验规则**：五域名均通过且每域延迟 < 2000ms。对每条代理访问以下五个地址验证（优先 HEAD，不支持则回退 GET）：
   - `https://www.eastmoney.com/`
   - `https://www.sse.com.cn/`
   - `https://finance.sina.com.cn/`（新浪财经）
-  三个请求均需在 **2 秒内**成功（HTTP 200）方视为通过。每个代理分别以 **HTTP 代理** 和 **HTTPS 代理** 各测一次；**协议** 写入 meta：只通 HTTP→`http`，只通 HTTPS→`https`，两个都通→`http/s`。校验时**多代理并发**、**单代理内三域名并行**。列表直显：表格列为「代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议」。
+  - `https://web.ifzq.gtimg.cn/`
+  - `https://proxy.finance.qq.com/`
+  五个请求均需在 **2 秒内**成功（HTTP 200）方视为通过。每个代理分别以 **HTTP 代理** 和 **HTTPS 代理** 各测一次；**协议** 写入 meta：只通 HTTP→`http`，只通 HTTPS→`https`，两个都通→`http/s`。校验时**多代理并发**、**单代理内五域名并行**。列表直显：表格列为「代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | web.ifzq.gtimg.cn | proxy.finance.qq.com | 协议」。
 - **更新频率**：列表按小时更新，保证可用代理的时效性。
 - **并发参数**：校验 worker 数可通过 `-check-workers`（如 `-check-workers=4000`）或环境变量 `GFP_CHECK_WORKERS` 设置，默认 4000，最大 4000。遇目标站限流可适当调低。
 
@@ -79,7 +81,7 @@
 
 <!-- END PROXY LIST -->
 
-以下为**通过测试**的代理前 100 条预览（三域名均通过且每域延迟 < 2000ms；代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议）。完整列表请使用上方表格中的「**通过测试 (Passed)**」下载。
+以下为**通过测试**的代理前 100 条预览（五域名均通过且每域延迟 < 2000ms；代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | web.ifzq.gtimg.cn | proxy.finance.qq.com | 协议）。完整列表请使用上方表格中的「**通过测试 (Passed)**」下载。
 
 <!-- BEGIN PROXY TABLE -->
 | 代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | 协议 |
