@@ -135,6 +135,14 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*P
 			url))
 	}
 
+	// 仅展示至少通过 HTTP 或 HTTPS 之一的代理，取前 100 条用于表格
+	passedResults := make([]*ProxyResult, 0, len(results))
+	for _, r := range results {
+		if r.HTTPOk || r.HTTPSOk {
+			passedResults = append(passedResults, r)
+		}
+	}
+
 	startMarker := "<!-- BEGIN PROXY LIST -->"
 	endMarker := "<!-- END PROXY LIST -->"
 
@@ -154,7 +162,7 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*P
 %s`, tsUTC, tsUTC8, total, tableContent.String())
 		replaceReadmeSection(readmePath, string(readmeContent), startMarker, endMarker, newSectionZH)
 		readmeContent, _ = os.ReadFile(readmePath)
-		writeReadmeProxyTable(readmePath, string(readmeContent), results, true)
+		writeReadmeProxyTable(readmePath, string(readmeContent), passedResults, true)
 	}
 
 	// Update README_EN.md (English)
@@ -173,7 +181,7 @@ Click on your preferred proxy type to get the latest list. These links always po
 %s`, tsUTC, tsUTC8, total, tableContent.String())
 		replaceReadmeSection(readmeENPath, string(readmeENContent), startMarker, endMarker, newSection)
 		readmeENContent, _ = os.ReadFile(readmeENPath)
-		writeReadmeProxyTable(readmeENPath, string(readmeENContent), results, false)
+		writeReadmeProxyTable(readmeENPath, string(readmeENContent), passedResults, false)
 	}
 }
 
