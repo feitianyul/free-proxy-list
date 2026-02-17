@@ -12,7 +12,7 @@ build: tidy
 # clone-wiki-only: 仅克隆 wiki 仓库（用于轻量复测时读取当前 lists）
 clone-wiki-only:
 	rm -rf ../wiki || true
-	git clone https://github.com/feitianyul/free-proxy-list.wiki.git ../wiki || true
+	git clone https://github.com/feitianyul/free-proxy-list/wiki.git ../wiki || true
 	mkdir -p ../wiki/lists
 
 # clone-wiki: 克隆 wiki 并将本地 list/* 拷贝到 wiki/lists（全量更新后用）
