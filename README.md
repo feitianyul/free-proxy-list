@@ -64,18 +64,18 @@
 
 <!-- BEGIN PROXY LIST -->
 
-最后更新：2026-02-17 02:34:49 UTC（2026-02-17 10:34:49 UTC+8）
+最后更新：2026-02-17 05:04:37 UTC（2026-02-17 13:04:37 UTC+8）
 
-**代理总数：170**
+**代理总数：150**
 
 点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
 
 | 协议 | 数量 | 下载 |
 |----------|-------|----------|
-| HTTP | 170 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
+| HTTP | 150 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
 | HTTPS | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/https.txt |
 | HTTP+S | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http+s.txt |
-| 通过测试 (Passed) | 1708 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
+| 通过测试 (Passed) | 1374 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
 
 <!-- END PROXY LIST -->
 
@@ -84,106 +84,106 @@
 <!-- BEGIN PROXY TABLE -->
 | 代理地址 | HTTP | HTTPS |
 |----------|------|--------|
-| 45.151.182.9:3128 | ✓ 1628ms | 否 Head "https://www.ea |
-| 216.229.112.25:8080 | ✓ 1481ms | 否 Head "https://www.ea |
-| 94.176.3.42:7443 | ✓ 1943ms | 否 Head "https://www.ea |
-| 72.56.59.17:61931 | ✓ 1665ms | 否 Head "https://www.ea |
-| 72.56.59.23:61937 | ✓ 1732ms | 否 Head "https://www.ea |
-| 72.56.59.62:63133 | ✓ 1732ms | 否 Head "https://www.ea |
-| 104.238.30.58:63744 | ✓ 1628ms | 否 Head "https://www.ea |
-| 104.238.30.63:63744 | ✓ 1632ms | 否 Head "https://www.ea |
-| 94.176.3.53:7443 | ✓ 1785ms | 否 Head "https://www.ea |
-| 72.56.59.56:63127 | ✓ 1819ms | 否 Head "https://www.ea |
-| 104.238.30.37:59741 | ✓ 1659ms | 否 Head "https://www.ea |
-| 104.238.30.68:63744 | ✓ 1663ms | 否 Head "https://www.ea |
-| 104.238.30.91:63900 | ✓ 1764ms | 否 Head "https://www.ea |
-| 104.238.30.86:63900 | ✓ 1731ms | 否 Head "https://www.ea |
-| 34.101.184.164:3128 | ✓ 1699ms | 否 Head "https://www.ea |
-| 91.187.57.109:8080 | ✓ 1646ms | 否 Head "https://www.ea |
-| 205.209.118.30:3138 | ✓ 773ms | 否 Head "https://www.ea |
-| 52.188.28.218:3128 | ✓ 835ms | 否 Head "https://www.ea |
-| 216.229.112.25:8080 | ✓ 912ms | 否 Head "https://www.ea |
-| 20.78.26.206:8561 | ✓ 819ms | 否 Head "https://www.ea |
-| 20.210.39.153:8561 | ✓ 814ms | 否 Head "https://www.ea |
-| 20.78.118.91:8561 | ✓ 787ms | 否 Head "https://www.ea |
-| 178.253.22.108:65431 | ✓ 1640ms | 否 Head "https://www.ea |
-| 165.227.5.10:8888 | ✓ 511ms | 否 Head "https://www.ea |
-| 202.152.44.18:8081 | ✓ 1042ms | 否 Head "https://www.ea |
-| 202.152.44.19:8081 | ✓ 1048ms | 否 Head "https://www.ea |
-| 120.92.212.16:8890 | ✓ 1149ms | 否 Head "https://www.ea |
-| 72.56.59.23:61937 | ✓ 1727ms | 否 Head "https://www.ea |
-| 72.56.59.62:63133 | ✓ 1724ms | 否 Head "https://www.ea |
-| 72.56.59.17:61931 | ✓ 1728ms | 否 Head "https://www.ea |
-| 104.238.30.91:63900 | ✓ 1699ms | 否 Head "https://www.ea |
-| 150.230.104.3:16728 | ✓ 1273ms | 否 Head "https://www.ea |
-| 104.238.30.58:63744 | ✓ 1696ms | 否 Head "https://www.ea |
-| 104.238.30.86:63900 | ✓ 1723ms | 否 Head "https://www.ea |
-| 104.238.30.63:63744 | ✓ 1692ms | 否 Head "https://www.ea |
-| 72.56.59.56:63127 | ✓ 1507ms | 否 Head "https://www.ea |
-| 104.238.30.37:59741 | ✓ 1600ms | 否 Head "https://www.ea |
-| 34.101.184.164:3128 | ✓ 964ms | 否 Head "https://www.ea |
-| 94.176.3.53:7443 | ✓ 1879ms | 否 Head "https://www.ea |
-| 34.14.143.185:3128 | ✓ 1764ms | 否 Head "https://www.ea |
-| 104.238.30.68:63744 | ✓ 1631ms | 否 Head "https://www.ea |
-| 8.212.178.171:8080 | ✓ 1152ms | 否 Head "https://www.ea |
-| 94.176.3.42:7443 | ✓ 1336ms | 否 Head "https://www.ea |
-| 211.230.49.122:3128 | ✓ 1805ms | 否 Head "https://www.ea |
-| 52.188.28.218:3128 | ✓ 67ms | 否 Head "https://www.ea |
-| 205.209.118.30:3138 | ✓ 195ms | 否 Head "https://www.ea |
-| 178.253.22.108:65431 | ✓ 529ms | 否 Head "https://www.ea |
-| 216.229.112.25:8080 | ✓ 692ms | 否 Head "https://www.ea |
-| 211.230.49.122:3128 | ✓ 783ms | 否 Head "https://www.ea |
-| 5.9.218.168:3128 | ✓ 1026ms | 否 Head "https://www.ea |
-| 202.152.44.18:8081 | ✓ 953ms | 否 Head "https://www.ea |
-| 202.152.44.19:8081 | ✓ 949ms | 否 Head "https://www.ea |
-| 150.230.104.3:16728 | ✓ 1381ms | 否 Head "https://www.ea |
-| 8.212.178.171:8080 | ✓ 1103ms | 否 Head "https://www.ea |
-| 115.231.181.40:8128 | ✓ 1185ms | 否 Head "https://www.ea |
-| 72.56.59.62:63133 | ✓ 1472ms | 否 Head "https://www.ea |
-| 72.56.59.23:61937 | ✓ 1467ms | 否 Head "https://www.ea |
-| 72.56.59.17:61931 | ✓ 1504ms | 否 Head "https://www.ea |
-| 72.56.59.56:63127 | ✓ 1501ms | 否 Head "https://www.ea |
-| 104.238.30.91:63900 | ✓ 1600ms | 否 Head "https://www.ea |
-| 104.238.30.68:63744 | ✓ 1599ms | 否 Head "https://www.ea |
-| 104.238.30.40:59741 | ✓ 1603ms | 否 Head "https://www.ea |
-| 104.238.30.45:59741 | ✓ 1600ms | 否 Head "https://www.ea |
-| 104.238.30.50:59741 | ✓ 1603ms | 否 Head "https://www.ea |
-| 104.238.30.63:63744 | ✓ 1635ms | 否 Head "https://www.ea |
-| 104.238.30.37:59741 | ✓ 1631ms | 否 Head "https://www.ea |
-| 104.238.30.38:59741 | ✓ 1632ms | 否 Head "https://www.ea |
-| 104.238.30.58:63744 | ✓ 1632ms | 否 Head "https://www.ea |
-| 104.238.30.86:63900 | ✓ 1636ms | 否 Head "https://www.ea |
-| 104.238.30.39:59741 | ✓ 1664ms | 否 Head "https://www.ea |
-| 94.176.3.53:7443 | ✓ 1904ms | 否 Head "https://www.ea |
-| 34.14.143.185:3128 | ✓ 1960ms | 否 Head "https://www.ea |
-| 45.151.182.9:3128 | ✓ 1703ms | 否 Head "https://www.ea |
-| 186.148.180.46:999 | ✓ 1431ms | 否 Head "https://www.ea |
-| 195.158.8.123:3128 | ✓ 1556ms | 否 Head "https://www.ea |
-| 205.209.118.30:3138 | ✓ 758ms | 否 Head "https://www.ea |
-| 62.113.119.14:8080 | ✓ 537ms | 否 Head "https://www.ea |
-| 20.78.26.206:8561 | ✓ 686ms | 否 Head "https://www.ea |
-| 20.210.39.153:8561 | ✓ 697ms | 否 Head "https://www.ea |
-| 20.78.118.91:8561 | ✓ 707ms | 否 Head "https://www.ea |
-| 150.230.104.3:16728 | ✓ 1384ms | 否 Head "https://www.ea |
-| 94.176.3.43:7443 | ✓ 1357ms | 否 Head "https://www.ea |
-| 120.92.212.16:7890 | ✓ 1276ms | 否 Head "https://www.ea |
-| 8.212.178.171:8080 | ✓ 1321ms | 否 Head "https://www.ea |
-| 72.56.59.17:61931 | ✓ 1475ms | 否 Head "https://www.ea |
-| 72.56.59.23:61937 | ✓ 1451ms | 否 Head "https://www.ea |
-| 72.56.59.62:63133 | ✓ 1506ms | 否 Head "https://www.ea |
-| 72.56.50.17:59787 | ✓ 1509ms | 否 Head "https://www.ea |
-| 72.56.59.56:63127 | ✓ 1504ms | 否 Head "https://www.ea |
-| 104.238.30.63:63744 | ✓ 1596ms | 否 Head "https://www.ea |
-| 104.238.30.37:59741 | ✓ 1660ms | 否 Head "https://www.ea |
-| 104.238.30.58:63744 | ✓ 1636ms | 否 Head "https://www.ea |
-| 104.238.30.86:63900 | ✓ 1628ms | 否 Head "https://www.ea |
-| 104.238.30.91:63900 | ✓ 1667ms | 否 Head "https://www.ea |
-| 104.238.30.68:63744 | ✓ 1667ms | 否 Head "https://www.ea |
-| 205.209.118.30:3138 | ✓ 59ms | 否 Head "https://www.ea |
-| 150.230.104.3:16728 | ✓ 680ms | 否 Head "https://www.ea |
-| 172.86.92.68:31337 | ✓ 1392ms | 否 Head "https://www.ea |
-| 120.92.212.16:8890 | ✓ 1151ms | 否 Head "https://www.ea |
-| 8.212.178.171:8080 | ✓ 1347ms | 否 Head "https://www.ea |
+| 5.75.201.136:1080 | ✓ 950ms | 否 Head "https://www.ea |
+| 205.209.118.30:3138 | ✓ 1610ms | 否 Head "https://www.ea |
+| 72.56.59.56:63127 | ✓ 1855ms | 否 Head "https://www.ea |
+| 72.56.59.23:61937 | ✓ 1856ms | 否 Head "https://www.ea |
+| 72.56.59.17:61931 | ✓ 1824ms | 否 Head "https://www.ea |
+| 216.229.112.25:8080 | ✓ 1966ms | 否 Head "https://www.ea |
+| 104.238.30.58:63744 | ✓ 1823ms | 否 Head "https://www.ea |
+| 104.238.30.50:59741 | ✓ 1759ms | 否 Head "https://www.ea |
+| 104.238.30.40:59741 | ✓ 1788ms | 否 Head "https://www.ea |
+| 104.238.30.45:59741 | ✓ 1791ms | 否 Head "https://www.ea |
+| 104.238.30.68:63744 | ✓ 1856ms | 否 Head "https://www.ea |
+| 104.238.30.38:59741 | ✓ 1924ms | 否 Head "https://www.ea |
+| 104.238.30.91:63900 | ✓ 1916ms | 否 Head "https://www.ea |
+| 104.238.30.86:63900 | ✓ 1859ms | 否 Head "https://www.ea |
+| 104.238.30.39:59741 | ✓ 1952ms | 否 Head "https://www.ea |
+| 104.238.30.37:59741 | ✓ 1915ms | 否 Head "https://www.ea |
+| 91.187.57.109:8080 | ✓ 1551ms | 否 Head "https://www.ea |
+| 116.107.88.217:10014 | ✓ 1780ms | 否 Head "https://www.ea |
+| 205.209.118.30:3138 | ✓ 253ms | 否 Head "https://www.ea |
+| 62.113.119.14:8080 | ✓ 600ms | 否 Head "https://www.ea |
+| 168.235.110.63:3128 | ✓ 1208ms | 否 Head "https://www.ea |
+| 150.230.104.3:16728 | ✓ 1428ms | 否 Head "https://www.ea |
+| 120.92.212.16:8890 | ✓ 1085ms | 否 Head "https://www.ea |
+| 183.249.5.117:22222 | ✓ 932ms | 否 Head "https://www.ea |
+| 216.229.112.25:8080 | ✓ 1458ms | 否 Head "https://www.ea |
+| 72.56.59.17:61931 | ✓ 1571ms | 否 Head "https://www.ea |
+| 72.56.59.23:61937 | ✓ 1596ms | 否 Head "https://www.ea |
+| 94.176.3.43:7443 | ✓ 1963ms | 否 Head "https://www.ea |
+| 113.59.32.162:22222 | ✓ 1386ms | 否 Head "https://www.ea |
+| 104.238.30.91:63900 | ✓ 1792ms | 否 Head "https://www.ea |
+| 104.238.30.86:63900 | ✓ 1759ms | 否 Head "https://www.ea |
+| 104.238.30.58:63744 | ✓ 1792ms | 否 Head "https://www.ea |
+| 72.56.50.17:59787 | ✓ 1599ms | 否 Head "https://www.ea |
+| 104.238.30.63:63744 | ✓ 1952ms | 否 Head "https://www.ea |
+| 72.56.59.56:63127 | ✓ 1598ms | 否 Head "https://www.ea |
+| 104.238.30.37:59741 | ✓ 1823ms | 否 Head "https://www.ea |
+| 115.114.77.133:9090 | ✓ 1954ms | 否 Head "https://www.ea |
+| 211.230.49.122:3128 | ✓ 1451ms | 否 Head "https://www.ea |
+| 104.238.30.68:63744 | ✓ 1760ms | 否 Head "https://www.ea |
+| 116.107.88.217:10014 | ✓ 1488ms | 否 Head "https://www.ea |
+| 94.176.3.42:7443 | ✓ 1728ms | 否 Head "https://www.ea |
+| 205.209.118.30:3138 | ✓ 136ms | 否 Head "https://www.ea |
+| 150.230.104.3:16728 | ✓ 586ms | 否 Head "https://www.ea |
+| 89.208.85.78:443 | ✓ 610ms | 否 Head "https://www.ea |
+| 211.230.49.122:3128 | ✓ 844ms | 否 Head "https://www.ea |
+| 195.123.209.48:3128 | ✓ 1356ms | 否 Head "https://www.ea |
+| 34.14.143.185:3128 | ✓ 1060ms | 否 Head "https://www.ea |
+| 94.176.3.53:7443 | ✓ 1914ms | 否 Head "https://www.ea |
+| 72.56.59.62:63133 | ✓ 1607ms | 否 Head "https://www.ea |
+| 72.56.59.56:63127 | ✓ 1637ms | 否 Head "https://www.ea |
+| 72.56.50.17:59787 | ✓ 1598ms | 否 Head "https://www.ea |
+| 72.56.59.23:61937 | ✓ 1665ms | 否 Head "https://www.ea |
+| 72.56.59.17:61931 | ✓ 1631ms | 否 Head "https://www.ea |
+| 72.10.164.178:5985 | ✓ 1576ms | 否 Head "https://www.ea |
+| 104.238.30.40:59741 | ✓ 1760ms | 否 Head "https://www.ea |
+| 104.238.30.50:59741 | ✓ 1763ms | 否 Head "https://www.ea |
+| 104.238.30.39:59741 | ✓ 1793ms | 否 Head "https://www.ea |
+| 104.238.30.68:63744 | ✓ 1820ms | 否 Head "https://www.ea |
+| 104.238.30.37:59741 | ✓ 1852ms | 否 Head "https://www.ea |
+| 104.238.30.45:59741 | ✓ 1823ms | 否 Head "https://www.ea |
+| 104.238.30.91:63900 | ✓ 1791ms | 否 Head "https://www.ea |
+| 104.238.30.86:63900 | ✓ 1761ms | 否 Head "https://www.ea |
+| 104.238.30.38:59741 | ✓ 1923ms | 否 Head "https://www.ea |
+| 104.238.30.58:63744 | ✓ 1915ms | 否 Head "https://www.ea |
+| 51.250.88.121:9998 | ✓ 1484ms | 否 Head "https://www.ea |
+| 104.238.30.63:63744 | ✓ 1919ms | 否 Head "https://www.ea |
+| 186.148.180.46:999 | ✓ 1381ms | 否 Head "https://www.ea |
+| 200.10.31.45:999 | ✓ 1664ms | 否 Head "https://www.ea |
+| 116.107.88.217:10014 | ✓ 1453ms | 否 Head "https://www.ea |
+| 205.209.118.30:3138 | ✓ 830ms | 否 Head "https://www.ea |
+| 89.208.85.78:443 | ✓ 1262ms | 否 Head "https://www.ea |
+| 90.84.188.97:8000 | ✓ 1248ms | 否 Head "https://www.ea |
+| 89.208.85.78:18080 | ✓ 1271ms | 否 Head "https://www.ea |
+| 120.238.159.230:22222 | ✓ 1108ms | 否 Head "https://www.ea |
+| 183.249.5.109:22222 | ✓ 1146ms | 否 Head "https://www.ea |
+| 120.92.212.16:8890 | ✓ 1086ms | 否 Head "https://www.ea |
+| 72.56.59.17:61931 | ✓ 1603ms | 否 Head "https://www.ea |
+| 72.56.59.23:61937 | ✓ 1598ms | 否 Head "https://www.ea |
+| 72.56.50.17:59787 | ✓ 1596ms | 否 Head "https://www.ea |
+| 72.56.59.56:63127 | ✓ 1656ms | 否 Head "https://www.ea |
+| 113.59.32.162:22222 | ✓ 1479ms | 否 Head "https://www.ea |
+| 104.238.30.39:59741 | ✓ 1795ms | 否 Head "https://www.ea |
+| 104.238.30.91:63900 | ✓ 1792ms | 否 Head "https://www.ea |
+| 104.238.30.38:59741 | ✓ 1763ms | 否 Head "https://www.ea |
+| 104.238.30.68:63744 | ✓ 1856ms | 否 Head "https://www.ea |
+| 104.238.30.50:59741 | ✓ 1819ms | 否 Head "https://www.ea |
+| 104.238.30.40:59741 | ✓ 1761ms | 否 Head "https://www.ea |
+| 104.238.30.86:63900 | ✓ 1791ms | 否 Head "https://www.ea |
+| 104.238.30.45:59741 | ✓ 1793ms | 否 Head "https://www.ea |
+| 104.238.30.58:63744 | ✓ 1792ms | 否 Head "https://www.ea |
+| 104.238.30.37:59741 | ✓ 1855ms | 否 Head "https://www.ea |
+| 104.238.30.63:63744 | ✓ 1888ms | 否 Head "https://www.ea |
+| 157.230.106.35:8080 | ✓ 1507ms | 否 Head "https://www.ea |
+| 94.176.3.42:7443 | ✓ 1866ms | 否 Head "https://www.ea |
+| 205.209.118.30:3138 | ✓ 126ms | 否 Head "https://www.ea |
+| 35.225.22.61:80 | ✓ 253ms | 否 Head "https://www.ea |
+| 89.208.85.78:18080 | ✓ 599ms | 否 Head "https://www.ea |
+| 89.208.85.78:443 | ✓ 605ms | 否 Head "https://www.ea |
+| 120.92.212.16:8890 | ✓ 1139ms | 否 Head "https://www.ea |
+| 183.249.5.117:22222 | ✓ 1440ms | 否 Head "https://www.ea |
 
 <!-- END PROXY TABLE -->
 
