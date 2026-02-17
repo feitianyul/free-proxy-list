@@ -78,50 +78,36 @@ func WriteTo(dir string) {
 		}
 	}
 
-	// 双协议结果：写 http+s.txt（同时通过 HTTP 与 HTTPS 的代理）
 	results := GetDualResults()
-	var httpPlusSCount int
-	httpPlusSName := "http+s.txt"
-	if f, err := os.Create(filepath.Join(dir, httpPlusSName)); err == nil {
-		for _, r := range results {
-			if r.HTTPOk && r.HTTPSOk {
-				httpPlusSCount++
-				f.WriteString("http://" + r.Addr() + "\n") // nolint: errcheck
-			}
+	// 通过测试：与表格同序，先构建 passedResults 再写 passed.txt（所有通过测试的 IP）
+	passedResults := make([]*ProxyResult, 0, len(results))
+	for _, r := range results {
+		if r.HTTPOk || r.HTTPSOk {
+			passedResults = append(passedResults, r)
 		}
-		f.Sync()  // nolint: errcheck
-		f.Close()
 	}
-	counters["http+s"] = httpPlusSCount
-
-	// 通过测试：写 passed.txt（至少通过 HTTP 或 HTTPS 之一的代理，与下方表格同标准）
 	passedFileName := "passed.txt"
-	var passedCount int
 	if f, err := os.Create(filepath.Join(dir, passedFileName)); err == nil {
-		for _, r := range results {
-			if r.HTTPOk || r.HTTPSOk {
-				passedCount++
-				f.WriteString("http://" + r.Addr() + "\n") // nolint: errcheck
-			}
+		for _, r := range passedResults {
+			f.WriteString("http://" + r.Addr() + "\n") // nolint: errcheck
 		}
 		f.Sync()  // nolint: errcheck
 		f.Close()
 	}
-	counters["passed"] = passedCount
+	counters["passed"] = len(passedResults)
 
 	// Generate total.svg and update README (list section + proxy table)
-	WriteTotalAndUpdateReadme(dir, counters, results)
+	WriteTotalAndUpdateReadme(dir, counters, results, passedResults)
 }
 
-func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*ProxyResult) {
-	// 固定展示三种协议（即使数量为 0），保证 README 表格始终有 HTTP / HTTPS / HTTP+S 三行
-	protocolOrder := []string{"http", "https", "http+s"}
+func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*ProxyResult, passedResults []*ProxyResult) {
+	// 固定展示两种协议 + 通过测试（HTTP / HTTPS / 通过测试）
+	protocolOrder := []string{"http", "https"}
 	for _, p := range protocolOrder {
 		if _, ok := counters[p]; !ok {
 			counters[p] = 0
 		}
 	}
-	// total 仅统计协议列表数量（不含 passed），passed 为子集
 	total := 0
 	for _, p := range protocolOrder {
 		total += counters[p]
@@ -142,7 +128,7 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*P
 		_ = os.WriteFile(outPath, resp.Bytes(), 0644) // nolint: errcheck
 	}
 
-	// Build protocol table for README (协议 | 数量 | 下载)：HTTP / HTTPS / HTTP+S / 通过测试
+	// Build protocol table for README (协议 | 数量 | 下载)：HTTP / HTTPS / 通过测试
 	var tableContent strings.Builder
 	for _, proto := range protocolOrder {
 		count := counters[proto]
@@ -153,18 +139,9 @@ func WriteTotalAndUpdateReadme(dir string, counters map[string]int, results []*P
 			count,
 			url))
 	}
-	// 通过测试：与下方表格同标准，仅含至少通过 HTTP 或 HTTPS 之一的代理
 	tableContent.WriteString(fmt.Sprintf("| 通过测试 (Passed) | %d | %s |\n",
 		counters["passed"],
 		"https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt"))
-
-	// 仅展示至少通过 HTTP 或 HTTPS 之一的代理，取前 100 条用于表格
-	passedResults := make([]*ProxyResult, 0, len(results))
-	for _, r := range results {
-		if r.HTTPOk || r.HTTPSOk {
-			passedResults = append(passedResults, r)
-		}
-	}
 
 	startMarker := "<!-- BEGIN PROXY LIST -->"
 	endMarker := "<!-- END PROXY LIST -->"
