@@ -41,7 +41,9 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "chore(list): Full proxy list update - $timestamp"
-            git push
+            branch=$(git branch --show-current)
+            git pull --rebase origin "$branch"
+            git push origin "$branch"
           fi
 
       - name: Clone Wiki and copy list to wiki
