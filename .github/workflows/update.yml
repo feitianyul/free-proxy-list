@@ -42,8 +42,10 @@ jobs:
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "chore(list): Full proxy list update - $timestamp"
             branch=$(git branch --show-current)
+            git stash -u
             git pull --rebase origin "$branch"
             git push origin "$branch"
+            git stash pop || true
           fi
 
       - name: Clone Wiki and copy list to wiki
