@@ -43,7 +43,12 @@ jobs:
             git commit -m "chore(list): Full proxy list update - $timestamp"
             branch=$(git branch --show-current)
             git stash -u
-            git pull --rebase origin "$branch"
+            git pull --rebase origin "$branch" || true
+            if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+              git checkout --theirs README.md README_EN.md
+              git add README.md README_EN.md
+              GIT_EDITOR=true git rebase --continue
+            fi
             git push origin "$branch"
             git stash pop || true
           fi
