@@ -192,7 +192,7 @@ func CheckProxyAsHTTP(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string
 	return true, elapsed, ""
 }
 
-// CheckProxyAsHTTPS 以 HTTPS 代理方式校验三域名（eastmoney + sse + sina），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
+// CheckProxyAsHTTPS 以 HTTPS 代理方式校验五域名（eastmoney + sse + sina + ifzq.gtimg + finance.qq），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
 func CheckProxyAsHTTPS(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string) {
 	if p == nil {
 		return false, nil, "nil proxy"

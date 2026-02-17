@@ -8,7 +8,7 @@ import (
 )
 
 // ProxyResult 保存单个代理的双协议（HTTP / HTTPS）校验结果，用于写 passed.txt 与 README 表格
-// 三域名（eastmoney / sse / sina）均通过且每域延迟 < 2000ms；Protocol：只通 HTTP→"http"，只通 HTTPS→"https"，都通→"http/s"
+// 五域名（eastmoney / sse / sina / ifzq.gtimg / finance.qq）均通过且每域延迟 < 2000ms；Protocol：只通 HTTP→"http"，只通 HTTPS→"https"，都通→"http/s"
 type ProxyResult struct {
 	IP            string
 	Port          int

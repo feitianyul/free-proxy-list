@@ -33,7 +33,7 @@ jobs:
           git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git" ../wiki || true
           mkdir -p ../wiki/lists
 
-      - name: Revalidate proxies (eastmoney + sse + sina 三域名, 每域 2s)
+      - name: Revalidate proxies (eastmoney + sse + sina + ifzq.gtimg + finance.qq 五域名, 每域 2s)
         run: |
           go mod tidy
           go build -o gfp ./cmd/main.go
