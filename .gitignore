@@ -28,3 +28,6 @@ go.work.sum
 
 # env file
 .env
+
+# Wiki 由 CI 单独克隆推送，不作为子模块
+free-proxy-list.wiki
