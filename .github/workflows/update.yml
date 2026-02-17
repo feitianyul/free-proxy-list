@@ -41,15 +41,14 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "chore(list): Full proxy list update - $timestamp"
-            branch=$(git branch --show-current)
             git stash -u
-            git pull --rebase origin "$branch" || true
+            git pull --rebase origin master || true
             if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
               git checkout --theirs README.md README_EN.md
               git add README.md README_EN.md
               GIT_EDITOR=true git rebase --continue
             fi
-            git push origin "$branch"
+            git push origin master
             git stash pop || true
           fi
 
@@ -68,7 +67,7 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          git config --global init.defaultBranch cn-validate
+          git config --global init.defaultBranch master
           cd ../wiki
           rm -rf .git
           git init
@@ -80,5 +79,5 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             timestamp=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "Update proxy lists - $timestamp"
-            git push --force origin cn-validate
+            git push --force origin master
           fi
