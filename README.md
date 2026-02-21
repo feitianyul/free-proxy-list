@@ -67,17 +67,17 @@
 
 <!-- BEGIN PROXY LIST -->
 
-最后更新：2026-02-21 08:50:02 UTC（2026-02-21 16:50:02 UTC+8）
+最后更新：2026-02-21 09:48:17 UTC（2026-02-21 17:48:17 UTC+8）
 
-**代理总数：15**
+**代理总数：17**
 
 点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
 
 | 协议 | 数量 | 下载 |
 |----------|-------|----------|
-| HTTP | 15 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
+| HTTP | 17 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
 | HTTPS | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/https.txt |
-| 通过测试 (Passed) | 15 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
+| 通过测试 (Passed) | 17 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
 
 <!-- END PROXY LIST -->
 
@@ -86,21 +86,23 @@
 <!-- BEGIN PROXY TABLE -->
 | 代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | web.ifzq.gtimg.cn | proxy.finance.qq.com | 协议 |
 |----------|---------------|------------|----------------------|-------------------|---------------------|------|
-| 168.235.110.63:3128 | ✓ 560ms | ✓ 1280ms | ✓ 1009ms | ✓ 1535ms | ✓ 993ms | http |
-| 211.230.49.122:3128 | ✓ 1500ms | ✓ 967ms | ✓ 1690ms | ✓ 1161ms | ✓ 868ms | http |
-| 205.209.118.30:3138 | ✓ 293ms | ✓ 1240ms | ✓ 1000ms | ✓ 1359ms | ✓ 1025ms | http |
-| 177.243.209.133:999 | ✓ 604ms | ✓ 1201ms | ✓ 507ms | ✓ 1188ms | ✓ 1013ms | http |
-| 220.170.182.39:9293 | ✓ 1338ms | ✓ 1484ms | ✓ 1382ms | ✓ 1455ms | ✓ 1431ms | http |
-| 120.92.212.16:8890 | ✓ 1032ms | ✓ 1884ms | ✓ 1606ms | ✓ 1353ms | ✓ 1848ms | http |
-| 70.22.175.232:3128 | ✓ 355ms | ✓ 1260ms | ✓ 321ms | ✓ 1494ms | ✓ 994ms | http |
-| 107.172.170.19:40000 | ✓ 262ms | ✓ 1117ms | ✓ 731ms | ✓ 844ms | ✓ 597ms | http |
-| 103.215.36.88:19475 | ✓ 983ms | ✓ 1307ms | ✓ 1032ms | ✓ 1383ms | ✓ 1059ms | http |
-| 91.216.71.35:443 | ✓ 1162ms | ✓ 1785ms | ✓ 1160ms | ✓ 1872ms | ✓ 1585ms | http |
-| 162.240.154.26:3128 | ✓ 346ms | ✓ 1577ms | ✓ 1551ms | ✓ 957ms | ✓ 1009ms | http |
-| 172.212.68.37:3128 | ✓ 874ms | ✓ 1959ms | ✓ 1044ms | ✓ 1819ms | ✓ 1306ms | http |
-| 47.122.124.35:7890 | ✓ 1903ms | ✓ 1551ms | ✓ 1093ms | ✓ 1255ms | ✓ 925ms | http |
-| 101.43.255.96:80 | ✓ 1529ms | ✓ 1802ms | ✓ 1703ms | ✓ 1234ms | ✓ 920ms | http |
-| 36.136.27.2:4999 | ✓ 1014ms | ✓ 1232ms | ✓ 1024ms | ✓ 1367ms | ✓ 1135ms | http |
+| 52.188.28.218:3128 | ✓ 141ms | ✓ 1171ms | ✓ 936ms | ✓ 1995ms | ✓ 1393ms | http |
+| 211.230.49.122:3128 | ✓ 1999ms | ✓ 1175ms | ✓ 1808ms | ✓ 1629ms | ✓ 1250ms | http |
+| 120.232.242.120:22222 | ✓ 1077ms | ✓ 1380ms | ✓ 1069ms | ✓ 1345ms | ✓ 1040ms | http |
+| 120.198.141.75:22222 | ✓ 1089ms | ✓ 1489ms | ✓ 1205ms | ✓ 1411ms | ✓ 1048ms | http |
+| 117.159.239.42:22222 | ✓ 1019ms | ✓ 1287ms | ✓ 1039ms | ✓ 1323ms | ✓ 1138ms | http |
+| 120.238.159.250:22222 | ✓ 1118ms | ✓ 1581ms | ✓ 1061ms | ✓ 1413ms | ✓ 1121ms | http |
+| 177.243.209.133:999 | ✓ 832ms | ✓ 1309ms | ✓ 549ms | ✓ 1588ms | ✓ 1522ms | http |
+| 103.215.36.88:15088 | ✓ 1194ms | ✓ 1570ms | ✓ 1184ms | ✓ 1535ms | ✓ 1267ms | http |
+| 205.209.118.30:3138 | ✓ 151ms | ✓ 1905ms | ✓ 1092ms | ✓ 1075ms | ✓ 1032ms | http |
+| 121.230.9.113:1080 | ✓ 1285ms | ✓ 1592ms | ✓ 1217ms | ✓ 1542ms | ✓ 1228ms | http |
+| 103.215.36.88:16650 | ✓ 1303ms | ✓ 1727ms | ✓ 1449ms | ✓ 1633ms | ✓ 1357ms | http |
+| 183.249.5.111:22222 | ✓ 997ms | ✓ 1129ms | ✓ 915ms | ✓ 1183ms | ✓ 867ms | http |
+| 5.101.0.233:3128 | ✓ 639ms | ✓ 1576ms | ✓ 1655ms | ✓ 1986ms | ✓ 1675ms | http |
+| 183.239.109.96:22222 | ✓ 1124ms | ✓ 1465ms | ✓ 1184ms | ✓ 1464ms | ✓ 1116ms | http |
+| 35.225.22.61:80 | ✓ 303ms | ✓ 1120ms | ✓ 1091ms | ✓ 1237ms | ✓ 1109ms | http |
+| 36.136.27.2:4999 | ✓ 1274ms | ✓ 1529ms | ✓ 1448ms | ✓ 1659ms | ✓ 1259ms | http |
+| 223.113.134.92:22222 | ✓ 817ms | ✓ 1328ms | ✓ 871ms | ✓ 1212ms | ✓ 895ms | http |
 
 <!-- END PROXY TABLE -->
 
