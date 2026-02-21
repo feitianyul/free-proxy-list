@@ -67,17 +67,17 @@
 
 <!-- BEGIN PROXY LIST -->
 
-最后更新：2026-02-21 17:43:17 UTC（2026-02-22 01:43:17 UTC+8）
+最后更新：2026-02-21 18:56:12 UTC（2026-02-22 02:56:12 UTC+8）
 
-**代理总数：15**
+**代理总数：20**
 
 点击您需要的协议类型获取最新列表，链接始终指向最近更新的代理文件。
 
 | 协议 | 数量 | 下载 |
 |----------|-------|----------|
-| HTTP | 15 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
+| HTTP | 20 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
 | HTTPS | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/https.txt |
-| 通过测试 (Passed) | 15 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
+| 通过测试 (Passed) | 20 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
 
 <!-- END PROXY LIST -->
 
@@ -86,21 +86,26 @@
 <!-- BEGIN PROXY TABLE -->
 | 代理地址 | eastmoney.com | sse.com.cn | finance.sina.com.cn | web.ifzq.gtimg.cn | proxy.finance.qq.com | 协议 |
 |----------|---------------|------------|----------------------|-------------------|---------------------|------|
-| 205.209.118.30:3138 | ✓ 314ms | ✓ 1488ms | ✓ 1608ms | ✓ 1226ms | ✓ 926ms | http |
-| 150.230.249.50:1080 | ✓ 715ms | ✓ 1407ms | ✓ 1795ms | ✓ 1992ms | ✓ 721ms | http |
-| 190.9.109.196:999 | ✓ 951ms | ✓ 1587ms | ✓ 1477ms | ✓ 1639ms | ✓ 1548ms | http |
-| 211.230.49.122:3128 | ✓ 1644ms | ✓ 1509ms | ✓ 647ms | ✓ 996ms | ✓ 882ms | http |
-| 217.76.245.80:999 | ✓ 630ms | ✓ 1366ms | ✓ 1368ms | ✓ 1513ms | ✓ 1263ms | http |
-| 47.122.124.35:7890 | ✓ 1256ms | ✓ 1304ms | ✓ 1028ms | ✓ 1205ms | ✓ 920ms | http |
-| 101.32.244.83:8080 | ✓ 1190ms | ✓ 1589ms | ✓ 881ms | ✓ 1283ms | ✓ 1152ms | http |
-| 59.127.212.110:4431 | ✓ 824ms | ✓ 1106ms | ✓ 1336ms | ✓ 988ms | ✓ 845ms | http |
-| 36.147.78.166:80 | ✓ 1651ms | ✓ 1613ms | ✓ 1699ms | ✓ 1534ms | ✓ 1560ms | http |
-| 168.235.110.63:3128 | ✓ 1286ms | ✓ 1553ms | ✓ 1523ms | ✓ 1302ms | ✓ 1073ms | http |
-| 107.172.170.19:40000 | ✓ 215ms | ✓ 1978ms | ✓ 1213ms | ✓ 996ms | ✓ 732ms | http |
-| 202.152.44.19:8081 | ✓ 828ms | ✓ 1694ms | ✓ 1155ms | ✓ 1192ms | ✓ 1992ms | http |
-| 121.43.196.213:8222 | ✓ 903ms | ✓ 1010ms | ✓ 805ms | ✓ 1094ms | ✓ 828ms | http |
-| 121.43.196.210:8222 | ✓ 901ms | ✓ 997ms | ✓ 801ms | ✓ 1123ms | ✓ 881ms | http |
-| 114.55.226.123:10086 | ✓ 1326ms | ✓ 1645ms | ✓ 938ms | ✓ 1246ms | ✓ 1017ms | http |
+| 205.209.118.30:3138 | ✓ 1707ms | ✓ 1792ms | ✓ 1111ms | ✓ 1249ms | ✓ 935ms | http |
+| 211.230.49.122:3128 | ✓ 1959ms | ✓ 1301ms | ✓ 1681ms | ✓ 1326ms | ✓ 1424ms | http |
+| 35.225.22.61:80 | ✓ 745ms | ✓ 1953ms | ✓ 880ms | ✓ 1192ms | ✓ 784ms | http |
+| 124.16.93.70:7890 | ✓ 1063ms | ✓ 1318ms | ✓ 1073ms | ✓ 1376ms | ✓ 1039ms | http |
+| 190.9.109.196:999 | ✓ 1628ms | ✓ 1752ms | ✓ 1294ms | ✓ 1526ms | ✓ 1317ms | http |
+| 217.76.245.80:999 | ✓ 976ms | ✓ 1567ms | ✓ 1209ms | ✓ 1589ms | ✓ 1292ms | http |
+| 115.231.181.40:8128 | ✓ 1075ms | ✓ 1304ms | ✓ 1076ms | ✓ 1398ms | ✓ 1081ms | http |
+| 121.230.8.29:1080 | ✓ 1431ms | ✓ 1813ms | ✓ 1416ms | ✓ 1650ms | ✓ 1164ms | http |
+| 59.127.212.110:4431 | ✓ 822ms | ✓ 1155ms | ✓ 1281ms | ✓ 1378ms | ✓ 1166ms | http |
+| 137.220.150.22:6005 | ✓ 1071ms | ✓ 1982ms | ✓ 1070ms | ✓ 1517ms | ✓ 1007ms | http |
+| 150.230.249.50:1080 | ✓ 1565ms | ✓ 1985ms | ✓ 1068ms | ✓ 1190ms | ✓ 926ms | http |
+| 37.27.100.108:443 | ✓ 656ms | ✓ 1598ms | ✓ 1258ms | ✓ 1984ms | ✓ 1971ms | http |
+| 36.136.27.2:4999 | ✓ 1403ms | ✓ 1461ms | ✓ 1361ms | ✓ 1670ms | ✓ 1213ms | http |
+| 47.122.124.35:7890 | ✓ 1134ms | ✓ 1354ms | ✓ 1157ms | ✓ 1423ms | ✓ 1070ms | http |
+| 121.43.196.210:8222 | ✓ 1111ms | ✓ 1183ms | ✓ 940ms | ✓ 1263ms | ✓ 1006ms | http |
+| 121.43.196.213:8222 | ✓ 1133ms | ✓ 1201ms | ✓ 958ms | ✓ 1295ms | ✓ 982ms | http |
+| 101.32.244.83:8080 | ✓ 1125ms | ✓ 1785ms | ✓ 1068ms | ✓ 1618ms | ✓ 1385ms | http |
+| 114.55.226.123:10086 | ✓ 1220ms | ✓ 1517ms | ✓ 1125ms | ✓ 1438ms | ✓ 1142ms | http |
+| 177.243.209.133:999 | ✓ 693ms | ✓ 1261ms | ✓ 1808ms | ✓ 1622ms | ✓ 1817ms | http |
+| 168.235.110.63:3128 | ✓ 1207ms | ✓ 1999ms | ✓ 1520ms | ✓ 1249ms | ✓ 1824ms | http |
 
 <!-- END PROXY TABLE -->
 
