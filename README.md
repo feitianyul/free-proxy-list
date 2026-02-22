@@ -63,7 +63,7 @@
 
 ## 🔗 直接下载链接
 
-点击下方表格中您需要的协议类型即可获取最新列表，链接始终指向最近更新的代理文件。
+点击下方表格中您需要的协议类型即可获取最新列表，链接始终指向最近更新的代理文件。上述三个文件（http.txt、https.txt、passed.txt）同时发布至 [GitHub Releases (tag: lists)](https://github.com/feitianyul/free-proxy-list/releases/tag/lists)，每次运行覆盖同版本附件，可固定使用该 Release 的附件 URL。
 
 <!-- BEGIN PROXY LIST -->
 

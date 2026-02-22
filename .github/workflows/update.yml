@@ -81,3 +81,12 @@ jobs:
             git commit -m "Update proxy lists - $timestamp"
             git push --force origin master
           fi
+
+      # 固定 Release 标签 lists，每次覆盖同名的 3 个附件，不新建版本
+      - name: Upload list files to GitHub Release (overwrite)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          gh release create lists --title "Proxy Lists" --notes "Auto-updated proxy list files (http.txt, https.txt, passed.txt). Same release, assets overwritten each run." --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
+          gh release upload lists list/http.txt list/https.txt list/passed.txt --clobber --repo "$GITHUB_REPOSITORY"
