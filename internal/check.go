@@ -25,12 +25,13 @@ const (
 	checkTimeout        = 2 * time.Second
 	defaultCheckWorkers = 4000
 	maxCheckWorkers     = 4000
+	minDomainsPass      = 3 // 五域名中至少通过个数
 )
 
 // CheckWorkers 并发校验的 worker 数量，由 main 通过 flag/env 设置，未设置时用 GetCheckWorkers() 的默认值
 var CheckWorkers int
 
-// CheckURLs 五域名验证（eastmoney + sse + sina + ifzq.gtimg + finance.qq），均需在 2 秒内成功（使用 HEAD 减少传输）
+// CheckURLs 五域名验证（eastmoney + sse + sina + ifzq.gtimg + finance.qq），任意 minDomainsPass 个在 2 秒内成功则通过（使用 HEAD 减少传输）
 var CheckURLs = []string{
 	"https://www.eastmoney.com/",
 	"https://www.sse.com.cn/",
@@ -49,7 +50,7 @@ func IsAllowedProtocol(protocol string) bool {
 	}
 }
 
-// CheckProxy 使用代理访问 CheckURLs 中的每个 URL（HEAD），全部在 2 秒内成功则通过；双 URL 并行
+// CheckProxy 使用代理访问 CheckURLs 中的每个 URL（HEAD），五域名中任意 minDomainsPass 个在 2 秒内成功则通过
 func CheckProxy(p *Proxy) bool {
 	if p == nil || !IsAllowedProtocol(p.Protocol) {
 		return false
@@ -65,12 +66,13 @@ func CheckProxy(p *Proxy) bool {
 		}(i, targetURL)
 	}
 	wg.Wait()
+	n := 0
 	for _, ok := range results {
-		if !ok {
-			return false
+		if ok {
+			n++
 		}
 	}
-	return true
+	return n >= minDomainsPass
 }
 
 // checkOne 使用 HEAD 请求验证代理可达性，2 秒内返回 200 则通过；若 HEAD 返回 405 则回退 GET
@@ -172,7 +174,7 @@ func GetCheckWorkers() int {
 	return n
 }
 
-// CheckProxyAsHTTP 以 HTTP 代理方式校验五域名（eastmoney + sse + sina + ifzq.gtimg + finance.qq），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
+// CheckProxyAsHTTP 以 HTTP 代理方式校验五域名，任意 minDomainsPass 个在 2s 内成功则通过；返回是否通过、每域延迟（未通过域为 0）、失败时 errMsg
 func CheckProxyAsHTTP(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string) {
 	if p == nil {
 		return false, nil, "nil proxy"
@@ -182,17 +184,23 @@ func CheckProxyAsHTTP(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string
 	proxyURL := p.String()
 	p.Protocol = orig
 	elapsed = make([]time.Duration, len(CheckURLs))
+	passCount := 0
 	for i, targetURL := range CheckURLs {
 		oneOk, oneElapsed, oneErr := checkOneWithResult(p, proxyURL, targetURL)
-		elapsed[i] = oneElapsed
-		if !oneOk {
-			return false, elapsed, oneErr
+		if oneOk {
+			elapsed[i] = oneElapsed
+			passCount++
+		} else {
+			elapsed[i] = 0
+			if errMsg == "" {
+				errMsg = oneErr
+			}
 		}
 	}
-	return true, elapsed, ""
+	return passCount >= minDomainsPass, elapsed, errMsg
 }
 
-// CheckProxyAsHTTPS 以 HTTPS 代理方式校验五域名（eastmoney + sse + sina + ifzq.gtimg + finance.qq），每域 2s 内成功，返回是否通过、每域延迟、失败时的简短错误
+// CheckProxyAsHTTPS 以 HTTPS 代理方式校验五域名，任意 minDomainsPass 个在 2s 内成功则通过；返回是否通过、每域延迟（未通过域为 0）、失败时 errMsg
 func CheckProxyAsHTTPS(p *Proxy) (ok bool, elapsed []time.Duration, errMsg string) {
 	if p == nil {
 		return false, nil, "nil proxy"
@@ -202,14 +210,20 @@ func CheckProxyAsHTTPS(p *Proxy) (ok bool, elapsed []time.Duration, errMsg strin
 	proxyURL := p.String()
 	p.Protocol = orig
 	elapsed = make([]time.Duration, len(CheckURLs))
+	passCount := 0
 	for i, targetURL := range CheckURLs {
 		oneOk, oneElapsed, oneErr := checkOneWithResult(p, proxyURL, targetURL)
-		elapsed[i] = oneElapsed
-		if !oneOk {
-			return false, elapsed, oneErr
+		if oneOk {
+			elapsed[i] = oneElapsed
+			passCount++
+		} else {
+			elapsed[i] = 0
+			if errMsg == "" {
+				errMsg = oneErr
+			}
 		}
 	}
-	return true, elapsed, ""
+	return passCount >= minDomainsPass, elapsed, errMsg
 }
 
 // ValidateProxiesConcurrent 并发校验 proxies，通过者由单 goroutine 调用 Save，返回通过数量

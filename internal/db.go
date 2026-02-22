@@ -239,9 +239,15 @@ func writeReadmeProxyTable(readmePath, content string, results []*ProxyResult, z
 	_ = os.WriteFile(readmePath, []byte(newContent), 0644) // nolint: errcheck
 }
 
+const tableCellMaxMs = 2000 // 与 check.checkTimeout 一致，≤此值且>0 显示 ✓Xms，否则显示 否
+
 func formatCellElapsed(elapsed []time.Duration, i int) string {
-	if i < len(elapsed) {
-		return fmt.Sprintf("✓ %dms", elapsed[i].Milliseconds())
+	if i >= len(elapsed) {
+		return "否"
+	}
+	d := elapsed[i]
+	if d > 0 && d.Milliseconds() <= tableCellMaxMs {
+		return fmt.Sprintf("✓ %dms", d.Milliseconds())
 	}
 	return "否"
 }
