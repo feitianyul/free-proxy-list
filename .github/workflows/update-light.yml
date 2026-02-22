@@ -88,5 +88,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
+          for f in list/http.txt list/https.txt list/passed.txt; do
+            [ ! -s "$f" ] && printf '\n' > "$f"
+          done
           gh release create lists --title "Proxy Lists" --notes "Auto-updated proxy list files (http.txt, https.txt, passed.txt). Same release, assets overwritten each run." --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
           gh release upload lists list/http.txt list/https.txt list/passed.txt --clobber --repo "$GITHUB_REPOSITORY"
