@@ -50,7 +50,7 @@ Click on your preferred proxy type to get the latest list. These links always po
 
 <!-- BEGIN PROXY LIST -->
 
-Last Updated: 2026-03-16 20:02:05 UTC (2026-03-17 04:02:05 UTC+8)
+Last Updated: 2026-03-16 21:32:48 UTC (2026-03-17 05:32:48 UTC+8)
 
 **Total Proxies: 77**
 
