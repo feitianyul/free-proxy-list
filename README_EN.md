@@ -50,17 +50,17 @@ Click on your preferred proxy type to get the latest list. These links always po
 
 <!-- BEGIN PROXY LIST -->
 
-Last Updated: 2026-06-10 22:55:44 UTC (2026-06-11 06:55:44 UTC+8)
+Last Updated: 2026-06-11 01:05:17 UTC (2026-06-11 09:05:17 UTC+8)
 
-**Total Proxies: 186**
+**Total Proxies: 176**
 
 Click on your preferred proxy type to get the latest list. These links always point to the most recently updated proxy files.
 
 | Protocol | Count | Download |
 |----------|-------|----------|
-| HTTP | 186 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
+| HTTP | 176 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/http.txt |
 | HTTPS | 0 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/https.txt |
-| 通过测试 (Passed) | 186 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
+| 通过测试 (Passed) | 176 | https://raw.githubusercontent.com/wiki/feitianyul/free-proxy-list/lists/passed.txt |
 
 <!-- END PROXY LIST -->
 
